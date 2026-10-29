@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMS | Internal Portal — San Andreas</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/portal.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <style>
+    html { background: #f0f2f5; transition: none; }
+    html.theme-dark { background: #0b1320; }
+  </style>
+  <script src="js/theme-init.js"></script>
+</head>
+<body class="theme-light">
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span class="topbar-left">EMS-SAN-ANDREAS // INTERNAL PORTAL v2.4</span>
+      <span class="topbar-right">
+        <span class="status-dot"></span> СИСТЕМА АКТИВНА
+        <span class="topbar-divider">|</span>
+        <span id="topbar-date">—</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="ems-header">
+    <div class="ems-header-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/logo-star.svg" alt="EMS" class="ems-logo">
+        <div class="ems-header-text">
+          <span class="ems-title">EMERGENCY MEDICAL SERVICE</span>
+          <span class="ems-subtitle">Департамент здравоохранения штата Сан-Андреас</span>
+        </div>
+      </a>
+
+      <div class="header-meta">
+        <div class="meta-item">
+          <span class="meta-label">ОПЕРАТИВНАЯ СМЕНА</span>
+          <span class="meta-value">A-1 // ДЕЖУРСТВО</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">КОД СТАТУСА</span>
+          <span class="meta-value green">● СТАБИЛЬНО</span>
+        </div>
+      </div>
+
+      <button id="themeToggle" class="theme-toggle" title="Переключить тему" aria-label="Переключить тему">
+        <span class="theme-icon-light">☀</span>
+        <span class="theme-icon-dark">☾</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="ems-content">
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-label">// ДОСТУП РАЗРЕШЁН: СОТРУДНИКИ И ИНТЕРНЫ</div>
+      <h1>Внутренний портал <span class="accent">EMS</span></h1>
+      <p class="hero-desc">
+        Единая точка доступа к регламентам, протоколам и служебной информации
+        департамента экстренной медицинской помощи штата Сан-Андреас.
+      </p>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">07</span><span class="stat-lbl">РАЗДЕЛОВ</span></div>
+        <div class="stat"><span class="stat-num">24/7</span><span class="stat-lbl">ДЕЖУРСТВО</span></div>
+        <div class="stat"><span class="stat-num">SA</span><span class="stat-lbl">ЮРИСДИКЦИЯ</span></div>
+      </div>
+    </section>
+
+    <!-- БЛОК 0: БЕГУЩАЯ СТРОКА НОВОСТЕЙ -->
+    <section class="grid-section news-section">
+      <div class="news-ticker-row">
+        <div class="news-ticker-wrapper">
+          <div class="news-ticker" id="newsTicker">
+            <span class="ticker-title" style="padding: 0 20px;">Загрузка новостей...</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- БЛОК 1: СЛУЖЕБНЫЕ РАЗДЕЛЫ -->
+    <section class="grid-section">
+      <div class="section-head">
+        <h2>СЛУЖЕБНЫЕ РАЗДЕЛЫ</h2>
+        <span class="section-index">SECTION 01 — 05</span>
+      </div>
+      <div class="portal-grid">
+        <a href="pages/rules.html" class="portal-card">
+          <div class="card-top"><span class="card-code">[01]</span><span class="card-tag">УСТАВ</span></div>
+          <h3 class="card-title">Правила и Регламент</h3>
+          <p class="card-desc">Общие положения, кодекс этики, субординация и санкции для сотрудников EMS.</p>
+          <span class="card-link">ОТКРЫТЬ ДОКУМЕНТ ⮕</span>
+        </a>
+        <a href="pages/high-command.html" class="portal-card">
+          <div class="card-top"><span class="card-code">[02]</span><span class="card-tag">КОМАНДОВАНИЕ</span></div>
+          <h3 class="card-title">Старший состав</h3>
+          <p class="card-desc">Руководство департамента, звания, контакты и график приёма сотрудников.</p>
+          <span class="card-link">СПИСОК Л/С ⮕</span>
+        </a>
+        <a href="pages/departments.html" class="portal-card">
+          <div class="card-top"><span class="card-code">[03]</span><span class="card-tag">СТРУКТУРА</span></div>
+          <h3 class="card-title">Наши отделы</h3>
+          <p class="card-desc">HRID и EPD — ключевые направления службы, состав и расписание работы.</p>
+          <span class="card-link">СМОТРЕТЬ ⮕</span>
+        </a>
+        <a href="pages/promotion.html" class="portal-card">
+          <div class="card-top"><span class="card-code">[04]</span><span class="card-tag">КАРЬЕРА</span></div>
+          <h3 class="card-title">Повышение квалификации</h3>
+          <p class="card-desc">Требования к званиям, экзамены и порядок подачи рапорта на повышение.</p>
+          <span class="card-link">ИНСТРУКЦИЯ ⮕</span>
+        </a>
+        <a href="pages/general-info.html" class="portal-card">
+          <div class="card-top"><span class="card-code">[05]</span><span class="card-tag">ИНФО</span></div>
+          <h3 class="card-title">Общая информация</h3>
+          <p class="card-desc">Новости департамента, экстренные контакты и база знаний для интернов.</p>
+          <span class="card-link">ЧИТАТЬ ⮕</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- БЛОК 2: ОТДЕЛЫ EMS -->
+    <section class="grid-section" style="margin-top: 50px;">
+      <div class="section-head">
+        <h2>ОТДЕЛЫ EMS</h2>
+        <span class="section-index">SECTION 06 — 07</span>
+      </div>
+      <div class="portal-grid">
+        <a href="#" class="portal-card card-training" data-dept="hrid">
+          <div class="card-top"><span class="card-code">[06]</span><span class="card-tag">HRID · ОБУЧЕНИЕ</span></div>
+          <h3 class="card-title">Отдел обучения</h3>
+          <p class="card-desc">Программы подготовки интернов, учебные материалы, экзамены и аттестации персонала EMS.</p>
+          <span class="card-link">ПЕРЕЙТИ В HRID ⮕</span>
+        </a>
+        <a href="#" class="portal-card card-psych" data-dept="epd">
+          <div class="card-top"><span class="card-code">[07]</span><span class="card-tag">EPD · ПСИХИАТРИЯ</span></div>
+          <h3 class="card-title">Отдел психиатрии</h3>
+          <p class="card-desc">Психологические освидетельствования, протоколы тестирования и работа с сотрудниками фракций.</p>
+          <span class="card-link">ПЕРЕЙТИ В EPD ⮕</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ems-footer">
+    <div class="footer-inner">
+      <span>© EMS SAN-ANDREAS — DEPARTMENT OF HEALTH</span>
+      <span>INTERNAL USE ONLY // НЕ ДЛЯ ГРАЖДАНСКИХ</span>
+    </div>
+  </footer>
+
+  <!-- ACCESS MODAL -->
+  <div id="accessModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <h2 id="accessTitle">ЗАПРОС ДОСТУПА</h2>
+      <p class="modal-subtitle" id="accessSubtitle">Введите код доступа для продолжения.</p>
+      <label for="accessInput" class="modal-label">КОД ДОСТУПА</label>
+      <input type="password" id="accessInput" class="modal-input" placeholder="••••••••" autocomplete="off">
+      <div id="accessError" class="modal-error" style="display:none;">❌ Неверный код доступа</div>
+      <div class="modal-actions">
+        <button class="modal-btn-primary" id="accessConfirm">ПОДТВЕРДИТЬ</button>
+        <button class="modal-btn-secondary" id="accessCancel">ОТМЕНА</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="js/news-data.js"></script>
+  <script src="js/ticker.js"></script>
+  <script src="js/access-modal.js"></script>
+  <script src="js/theme.js"></script>
+  <script>
+    // Дата в топбаре
+    (function () {
+      const el = document.getElementById('topbar-date');
+      if (el) {
+        const d = new Date();
+        const p = n => String(n).padStart(2, '0');
+        el.textContent = `${p(d.getDate())}.${p(d.getMonth() + 1)}.${d.getFullYear()} // ${p(d.getHours())}:${p(d.getMinutes())}`;
+      }
+    })();
+  </script>
+</body>
+</html>

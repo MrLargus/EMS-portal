@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMS | Повышение квалификации</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/portal.css">
+  <link rel="stylesheet" href="../css/themes.css">
+  <!-- Подключаем стили для страницы повышения -->
+  <link rel="stylesheet" href="../css/promotion.css">
+  
+  <style>
+    /* Критический инлайн-стиль для предотвращения белой вспышки при загрузке */
+    html { background: #f0f2f5; transition: none; }
+    html.theme-dark { background: #0b1320; }
+  </style>
+  <script src="../js/theme-init.js"></script>
+</head>
+<body class="theme-light">
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span class="topbar-left">EMS // DOC: PROMOTION</span>
+      <span class="topbar-right"><span class="status-dot"></span> INTERNAL</span>
+    </div>
+  </div>
+
+  <header class="ems-header">
+    <div class="ems-header-inner">
+      <a href="../index.html" class="brand">
+        <img src="../assets/logo-star.svg" alt="EMS" class="ems-logo">
+        <div class="ems-header-text">
+          <span class="ems-title">EMERGENCY MEDICAL SERVICE</span>
+          <span class="ems-subtitle">Повышение квалификации</span>
+        </div>
+      </a>
+      <button id="themeToggle" class="theme-toggle" title="Переключить тему" aria-label="Переключить тему">
+        <span class="theme-icon-light">☀</span>
+        <span class="theme-icon-dark">☾</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="ems-content">
+    <a href="../index.html" class="back-link">⬅ НА ГЛАВНУЮ</a>
+
+    <div class="page-content">
+      <h1>Повышение квалификации</h1>
+
+      <!-- Шаг 1: Выбор основного раздела -->
+      <div class="doc-tabs" role="tablist" style="margin-bottom: 25px;" id="mainTabs">
+        <button class="doc-tab active" data-tab="hierarchy" onclick="switchMainTab('hierarchy')">
+          <span class="tab-code">01</span>
+          <span class="tab-label">Иерархия должностей</span>
+        </button>
+        <button class="doc-tab" data-tab="promotion" onclick="switchMainTab('promotion')">
+          <span class="tab-code">02</span>
+          <span class="tab-label">Информация о повышении</span>
+        </button>
+      </div>
+
+      <!-- Шаг 2: Контент (Иерархия) -->
+      <div id="pane-hierarchy" class="doc-pane active">
+        
+        <div class="hierarchy-card">
+          <div class="hierarchy-header">Иерархия должностей EMS</div>
+          
+          <div class="hierarchy-grid">
+            <div class="hierarchy-row top-rank">
+              <div class="hierarchy-col-rank">1</div>
+              <div class="hierarchy-col-name">Главный врач</div>
+            </div>
+            <div class="hierarchy-row">
+              <div class="hierarchy-col-rank">2</div>
+              <div class="hierarchy-col-name">Заместитель главного врача</div>
+            </div>
+            <div class="hierarchy-row">
+              <div class="hierarchy-col-rank">3</div>
+              <div class="hierarchy-col-name">Глава отдела / Заместитель</div>
+            </div>
+            <div class="hierarchy-row">
+              <div class="hierarchy-col-rank">4</div>
+              <div class="hierarchy-col-name">Хирург / Психиатр</div>
+            </div>
+            <div class="hierarchy-row">
+              <div class="hierarchy-col-rank">5</div>
+              <div class="hierarchy-col-name">Ведущий фельдшер</div>
+            </div>
+            <div class="hierarchy-row">
+              <div class="hierarchy-col-rank">6</div>
+              <div class="hierarchy-col-name">Фельдшер</div>
+            </div>
+            <div class="hierarchy-row">
+              <div class="hierarchy-col-rank">7</div>
+              <div class="hierarchy-col-name">Младший фельдшер</div>
+            </div>
+            <div class="hierarchy-row">
+              <div class="hierarchy-col-rank">8</div>
+              <div class="hierarchy-col-name">Интерн</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="no-recruit-box">
+          <h3>Набор закрыт на следующие должности:</h3>
+          <ul class="no-recruit-list">
+            <li>Глава отдела</li>
+            <li>Заместитель главы отдела</li>
+            <li>Хирург</li>
+            <li>Психиатр</li>
+          </ul>
+        </div>
+      </div> <!-- ЗАКРЫВАЮЩИЙ ТЕГ ДЛЯ pane-hierarchy -->
+
+      <!-- Шаг 2: Контент (Повышения) -->
+      <div id="pane-promotion" class="doc-pane" style="display: none;">
+        <p id="promoInstruction" style="margin-bottom: 15px; color: var(--text-dim);">Выберите текущую должность, чтобы узнать, как получить повышение:</p>
+        
+        <div class="promo-selector" id="promoList">
+          <!-- Сюда JS вставит плитки -->
+        </div>
+        
+        <!-- Блок с деталями (скрыт по умолчанию) -->
+        <div id="promoDetails" class="promo-details-box">
+          <button class="back-to-selection-btn" onclick="backToSelection()">⬅ Вернуться к выбору</button>
+          <h3 id="promoDetailTitle" class="promo-detail-title"></h3>
+          <div id="promoDetailContent"></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="ems-footer">
+    <div class="footer-inner">
+      <span>© EMS SAN-ANDREAS — DEPARTMENT OF HEALTH</span>
+      <span>INTERNAL USE ONLY // НЕ ДЛЯ ГРАЖДАНСКИХ</span>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast">✅ Скопировано!</div>
+
+  <!-- Подключаем базу повышений -->
+  <script src="../js/promotions-data.js"></script>
+  <script src="../js/theme.js"></script>
+  
+  <script>
+    // 1. Рендер списка плиток (БЕЗ ИКОНОК)
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('promoList');
+      if (!container) return;
+
+      PROMOTIONS.forEach(promo => {
+        const btn = document.createElement('button');
+        btn.className = 'promo-select-btn';
+        btn.dataset.id = promo.id;
+        btn.innerHTML = `
+          <div class="promo-title">${promo.title}</div>
+          <div class="promo-desc">${promo.subtitle || 'Нажмите, чтобы узнать подробности'}</div>
+        `;
+        btn.onclick = () => showPromotion(promo.id);
+        container.appendChild(btn);
+      });
+    });
+
+    // 2. Показ деталей повышения
+    function showPromotion(id) {
+      const promo = PROMOTIONS.find(p => p.id === id);
+      if (!promo) return;
+
+      // Скрываем сетку плиток
+      document.getElementById('promoList').classList.add('hidden');
+      document.getElementById('promoInstruction').style.display = 'none';
+
+      // Показываем блок с деталями
+      const details = document.getElementById('promoDetails');
+      const title = document.getElementById('promoDetailTitle');
+      const content = document.getElementById('promoDetailContent');
+
+      title.innerHTML = promo.title;
+      if (promo.subtitle) {
+        title.innerHTML += `<div class="promo-detail-subtitle">${promo.subtitle}</div>`;
+      }
+      
+      content.innerHTML = promo.content;
+      
+      details.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 3. Возврат к выбору
+    function backToSelection() {
+      // Скрываем детали
+      document.getElementById('promoDetails').classList.remove('active');
+      
+      // Показываем сетку плиток
+      document.getElementById('promoList').classList.remove('hidden');
+      document.getElementById('promoInstruction').style.display = 'block';
+    }
+
+    // 4. Переключение главных вкладок
+    function switchMainTab(tabName) {
+      document.querySelectorAll('#mainTabs .doc-tab').forEach(t => {
+        t.classList.toggle('active', t.dataset.tab === tabName);
+      });
+      
+      document.getElementById('pane-hierarchy').style.display = tabName === 'hierarchy' ? 'block' : 'none';
+      document.getElementById('pane-promotion').style.display = tabName === 'promotion' ? 'block' : 'none';
+      
+      if (tabName === 'hierarchy') {
+        // Если ушли на другую вкладку, сбрасываем выбор, чтобы при возврате был список
+        backToSelection();
+      }
+    }
+
+    // 5. Копирование шаблонов
+    function copyTemplate(elementId) {
+      const template = document.getElementById(elementId);
+      if (!template) return;
+      
+      const textToCopy = template.innerText;
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        showToast('✅ Скопировано!');
+      }).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = textToCopy;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast('✅ Скопировано!');
+      });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMS | Наши отделы</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/portal.css">
+  <link rel="stylesheet" href="../css/themes.css">
+  <style>
+    html { background: #f0f2f5; transition: none; }
+    html.theme-dark { background: #0b1320; }
+  </style>
+  <script src="../js/theme-init.js"></script>
+</head>
+<body class="theme-light">
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span class="topbar-left">EMS // DOC: DEPARTMENTS</span>
+      <span class="topbar-right"><span class="status-dot"></span> INTERNAL</span>
+    </div>
+  </div>
+
+  <header class="ems-header">
+    <div class="ems-header-inner">
+      <a href="../index.html" class="brand">
+        <img src="../assets/logo-star.svg" alt="EMS" class="ems-logo">
+        <div class="ems-header-text">
+          <span class="ems-title">EMERGENCY MEDICAL SERVICE</span>
+          <span class="ems-subtitle">Наши отделы</span>
+        </div>
+      </a>
+      <button id="themeToggle" class="theme-toggle" title="Переключить тему" aria-label="Переключить тему">
+        <span class="theme-icon-light">☀</span>
+        <span class="theme-icon-dark">☾</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="ems-content">
+    <a href="../index.html" class="back-link">⬅ НА ГЛАВНУЮ</a>
+
+    <div class="doc-tabs" role="tablist" style="margin-bottom: 25px;">
+      <button class="doc-tab active" data-tab="hrid" role="tab" onclick="switchDeptTab('hrid')">
+        <span class="tab-code">01</span>
+        <span class="tab-label">HRID (Кадры и стажировки)</span>
+      </button>
+      <button class="doc-tab" data-tab="epd" role="tab" onclick="switchDeptTab('epd')">
+        <span class="tab-code">02</span>
+        <span class="tab-label">EPD (Мероприятия и психиатрия)</span>
+      </button>
+    </div>
+
+    <div class="page-content">
+      <!-- HRID -->
+      <div class="doc-pane active" id="pane-hrid">
+        <h1>Отдел кадров и стажировки (HRID)</h1>
+        <p>Сотрудники отдела HRID являются <strong>хирургами</strong> и занимаются отбором, обучением и адаптацией новых сотрудников.</p>
+        <h3>Рабочий состав</h3>
+        <table>
+          <thead><tr><th>Имя и Фамилия</th><th>Discord</th><th>График работы</th></tr></thead>
+          <tbody>
+            <tr><td>Anar Abdulaev</td><td><span style="color: var(--text-faint); font-style: italic;">Не указан</span></td><td>Пн, Ср, Сб с 15:00 до 18:00</td></tr>
+            <tr><td>Artem Fedotov</td><td><span style="color: var(--text-faint); font-style: italic;">Не указан</span></td><td>Пн, Ср, Сб с 15:00 до 18:00</td></tr>
+            <tr><td>Ilia Fedorusenko</td><td><span style="color: var(--text-faint); font-style: italic;">Не указан</span></td><td>Пн, Ср, Сб с 15:00 до 18:00</td></tr>
+            <tr><td>Kuzy Novoobrazenchi</td><td><span style="color: var(--text-faint); font-style: italic;">Не указан</span></td><td>Пн, Ср, Сб с 15:00 до 18:00</td></tr>
+            <tr><td>Miku Hatsune</td><td><span style="color: var(--text-faint); font-style: italic;">Не указан</span></td><td>Пн, Ср, Сб с 15:00 до 18:00</td></tr>
+            <tr><td>Sava Sanking</td><td><span style="color: var(--text-faint); font-style: italic;">Не указан</span></td><td>Пн, Ср, Сб с 15:00 до 18:00</td></tr>
+          </tbody>
+        </table>
+        <div class="info-box" style="margin-top: 20px;">
+          <strong>Обязанности отдела:</strong>
+          <ul>
+            <li>Проводить опрос и тестировать граждан, приходящих на трудоустройство в EMS.</li>
+            <li>Стажировать и проводить экзамены интернам.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- EPD -->
+      <div class="doc-pane" id="pane-epd" style="display: none;">
+        <h1>Отдел мероприятий и психиатрии (EPD)</h1>
+        <p>Сотрудники отдела EPD являются <strong>психиатрами</strong> и отвечают за психологическую помощь, тестирование сотрудников других фракций и организацию мероприятий.</p>
+        <h3>Рабочий состав</h3>
+        <table>
+          <thead><tr><th>Имя и Фамилия</th><th>Discord</th><th>График работы</th></tr></thead>
+          <tbody>
+            <tr><td>Nikits Lancerov</td><td><span style="color: var(--text-faint); font-style: italic;">Не указан</span></td><td>Вт, Чт, Пт с 19:00 до 22:00.<br>Вс с 17:00 до 20:00</td></tr>
+            <tr><td>Oleg Moon</td><td><span style="color: var(--text-faint); font-style: italic;">Не указан</span></td><td>Вт, Чт, Пт с 19:00 до 22:00.<br>Вс с 17:00 до 20:00</td></tr>
+            <tr><td>Pomius Djoplin</td><td><span style="color: var(--text-faint); font-style: italic;">Не указан</span></td><td>Вт, Чт, Пт с 18:00 до 22:00.<br>Вс с 14:00 до 19:00</td></tr>
+            <tr><td>Vladimir Dubrovsky</td><td><span style="color: var(--text-faint); font-style: italic;">Не указан</span></td><td>Вт, Чт, Пт с 16:00 до 22:00.<br>Вс с 12:00 до 17:00</td></tr>
+          </tbody>
+        </table>
+        <div class="info-box" style="margin-top: 20px;">
+          <strong>Обязанности отдела:</strong>
+          <ul>
+            <li>Проводить психиатрическое тестирование фракций.</li>
+            <li>Проводить мероприятия.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="ems-footer">
+    <div class="footer-inner">
+      <span>© EMS SAN-ANDREAS — DEPARTMENT OF HEALTH</span>
+      <span>INTERNAL USE ONLY // НЕ ДЛЯ ГРАЖДАНСКИХ</span>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast">✅ Скопировано!</div>
+  <script src="../js/copy-nick.js"></script>
+  <script src="../js/dept-tabs.js"></script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

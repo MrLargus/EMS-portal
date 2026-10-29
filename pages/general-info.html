@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMS | Общая информация</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/portal.css">
+  <link rel="stylesheet" href="../css/themes.css">
+  <style>
+    html { background: #f0f2f5; transition: none; }
+    html.theme-dark { background: #0b1320; }
+    
+    /* Стили для картинок в разделе информации */
+    .info-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      margin-bottom: 20px;
+      margin-top: 10px;
+      display: block;
+    }
+    
+    .image-caption {
+      font-size: 13px;
+      color: var(--text-dim);
+      text-align: center;
+      margin-top: -10px;
+      margin-bottom: 25px;
+      font-family: var(--mono);
+    }
+  </style>
+  <script src="../js/theme-init.js"></script>
+</head>
+<body class="theme-light">
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span class="topbar-left">EMS // DOC: GENERAL INFO</span>
+      <span class="topbar-right"><span class="status-dot"></span> INTERNAL</span>
+    </div>
+  </div>
+
+  <header class="ems-header">
+    <div class="ems-header-inner">
+      <a href="../index.html" class="brand">
+        <img src="../assets/logo-star.svg" alt="EMS" class="ems-logo">
+        <div class="ems-header-text">
+          <span class="ems-title">EMERGENCY MEDICAL SERVICE</span>
+          <span class="ems-subtitle">Общая информация</span>
+        </div>
+      </a>
+      <button id="themeToggle" class="theme-toggle" title="Переключить тему" aria-label="Переключить тему">
+        <span class="theme-icon-light">☀</span>
+        <span class="theme-icon-dark">☾</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="ems-content">
+    <a href="../index.html" class="back-link">⬅ НА ГЛАВНУЮ</a>
+
+    <!-- ===== TABS ===== -->
+    <div class="doc-tabs" role="tablist">
+      <button class="doc-tab active" data-tab="news" role="tab">
+        <span class="tab-code">01</span>
+        <span class="tab-label">Новости и объявления</span>
+      </button>
+      <button class="doc-tab" data-tab="info" role="tab">
+        <span class="tab-code">02</span>
+        <span class="tab-label">Общая информация</span>
+      </button>
+    </div>
+
+    <!-- ============================================================
+         TAB 1: НОВОСТИ
+         ============================================================ -->
+    <div class="doc-pane active" id="pane-news">
+      <div class="page-content">
+        <h1>Новости и объявления</h1>
+
+        <div id="news-feed-container" class="news-feed">
+          <div class="empty-news">Загрузка новостей...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         TAB 2: ОБЩАЯ ИНФОРМАЦИЯ
+         ============================================================ -->
+    <div class="doc-pane" id="pane-info" style="display: none;">
+      <div class="page-content">
+        <h1>Общая информация</h1>
+
+        <h2>01 - О департаменте</h2>
+        <p>Emergency Medical Service (EMS) - государственная структура, обеспечивающая медицинскую помощь гражданам штата, проведение освидетельствований и психологическую поддержку сотрудников других фракций.</p>
+
+        <h2>02 - Обозначения формы</h2>
+        <p>Сотрудники EMS делятся на основной и руководящий составы. Обратите внимание на отличия в форме:</p>
+        
+        <!-- ПЕРВАЯ КАРТИНКА (Форма) -->
+        <img src="../assets/form.jpg" alt="Форма сотрудников EMS" class="info-image">
+        <div class="image-caption">Основной состав (слева) и Руководящий состав (справа)</div>
+
+        <h2>03 - Постановка сотрудников на парковке</h2>
+        <p>Во время собраний сотрудники занимают строго определённые места на подземной парковке:</p>
+        <ul>
+          <li><strong>Старшие сотрудники</strong> встают вдоль жёлтых столбов.</li>
+          <li><strong>Остальные сотрудники</strong> (парамедики, интерны и т.д.) встают вдоль стены, согласно изображению.</li>
+        </ul>
+
+        <!-- ВТОРАЯ КАРТИНКА (Парковка) -->
+        <img src="../assets/parking.jpg" alt="Постановка сотрудников на парковке" class="info-image">
+        <div class="image-caption">Схема расстановки на подземной парковке</div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="ems-footer">
+    <div class="footer-inner">
+      <span>© EMS SAN-ANDREAS — DEPARTMENT OF HEALTH</span>
+      <span>INTERNAL USE ONLY // НЕ ДЛЯ ГРАЖДАНСКИХ</span>
+    </div>
+  </footer>
+
+  <!-- Подключаем базу новостей -->
+  <script src="../js/news-data.js"></script>
+  
+  <!-- Скрипт генерации карточек новостей и переключения вкладок -->
+  <script>
+    // 1. Генерация новостей
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('news-feed-container');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      
+      if (!NEWS_DATA || NEWS_DATA.length === 0) {
+        container.innerHTML = '<div class="empty-news">Пока нет новостей</div>';
+        return;
+      }
+
+      const sortedNews = [...NEWS_DATA].reverse();
+
+      sortedNews.forEach(news => {
+        const post = document.createElement('div');
+        post.className = 'news-post';
+        post.id = news.id;
+        post.innerHTML = `
+          <div class="news-post-header">
+            <h3 class="news-post-title">${news.title}</h3>
+            <div class="news-post-meta">
+              <strong>Автор:</strong> ${news.author}<br>
+              ${news.date}, ${news.time}
+            </div>
+          </div>
+          <div class="news-post-content">
+            ${news.content}
+          </div>
+        `;
+        container.appendChild(post);
+      });
+    });
+
+    // 2. Переключение вкладок
+    (function () {
+      const tabs = document.querySelectorAll('.doc-tab');
+      const panes = document.querySelectorAll('.doc-pane');
+
+      const DEFAULT_TAB = 'news';
+      const STORAGE_KEY = 'ems_general_active_tab';
+      const VALID_TABS = ['news', 'info'];
+
+      function activateTab(name) {
+        if (!VALID_TABS.includes(name)) name = DEFAULT_TAB;
+        tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+        panes.forEach(p => {
+          const isActive = p.id === 'pane-' + name;
+          p.style.display = isActive ? 'block' : 'none';
+          p.classList.toggle('active', isActive);
+        });
+      }
+
+      let savedTab = null;
+      try { savedTab = localStorage.getItem(STORAGE_KEY); } catch (e) { savedTab = null; }
+
+      const initialTab = (savedTab && VALID_TABS.includes(savedTab)) ? savedTab : DEFAULT_TAB;
+      activateTab(initialTab);
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const name = tab.dataset.tab;
+          activateTab(name);
+          try { localStorage.setItem(STORAGE_KEY, name); } catch (e) {}
+        });
+      });
+    })();
+  </script>
+
+  <script src="../js/theme.js"></script>
+</body>
+</html>
