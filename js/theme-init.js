@@ -6,12 +6,10 @@
   let saved = null;
   try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
 
-  const prefersDark = window.matchMedia &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches;
+  // Если сохранённой темы нет — ВСЕГДА светлая
+  const initial = saved || 'light';
 
-  const initial = saved || (prefersDark ? 'dark' : 'light');
-
-  // 1. Сразу вешаем класс на <html>, чтобы фон за пределами сайта был нужного цвета
+  // 1. Сразу вешаем класс на <html>
   document.documentElement.classList.toggle('theme-dark', initial === 'dark');
 
   // 2. Когда <body> появится, вешаем класс и на него
@@ -25,7 +23,6 @@
   if (document.body) {
     applyToBody();
   } else {
-    // Если body ещё нет, ждём его появления через MutationObserver (срабатывает мгновенно)
     const observer = new MutationObserver((mutations, obs) => {
       if (document.body) {
         applyToBody();

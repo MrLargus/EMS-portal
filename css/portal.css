@@ -1141,3 +1141,55 @@
     font-family: var(--mono);
     font-style: italic;
 }
+
+/* =========================================================
+   ОБЕРТКА ДЛЯ ТАБЛИЦ (СКРОЛЛ НА МОБИЛЬНЫХ)
+   ========================================================= */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 20px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.table-wrapper table {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  min-width: 600px;
+}
+
+/* =========================================================
+   УВЕДОМЛЕНИЕ (TOAST)
+   ========================================================= */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--text);
+  color: var(--panel);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  
+  /* Скрыто до появления */
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 9999;
+}
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}

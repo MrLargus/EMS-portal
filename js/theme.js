@@ -1,5 +1,5 @@
 /* =========================================================
-   ПЕРЕКЛЮЧАТЕЛЬ ТЕМ (день / ночь) — ОБРАБОТЧИК КЛИКА
+   ПЕРЕКЛЮЧАТЕЛЬ ТЕМ (день / ночь)
    ========================================================= */
 (function () {
   'use strict';
@@ -15,19 +15,32 @@
     try { localStorage.setItem(STORAGE_KEY, theme); } catch (e) {}
   }
 
+  function syncTheme() {
+    let saved = null;
+    try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+    
+    // Если нет сохранённой — светлая
+    if (!saved) saved = 'light';
+
+    const currentTheme = body.classList.contains('theme-dark') ? 'dark' : 'light';
+    if (currentTheme !== saved) {
+      applyTheme(saved);
+    }
+  }
+
+  // Синхронизация при загрузке
+  syncTheme();
+
+  // Синхронизация при возврате (кнопка "Назад")
+  window.addEventListener('pageshow', () => {
+    syncTheme();
+  });
+
+  // Обработчик клика
   if (toggle) {
     toggle.addEventListener('click', () => {
       const isDark = body.classList.contains('theme-dark');
       applyTheme(isDark ? 'light' : 'dark');
-    });
-  }
-
-  // Следим за системной темой (если пользователь не выбирал вручную)
-  if (window.matchMedia) {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      let manual = null;
-      try { manual = localStorage.getItem(STORAGE_KEY); } catch (err) {}
-      if (!manual) applyTheme(e.matches ? 'dark' : 'light');
     });
   }
 })();

@@ -2,7 +2,7 @@
 
 * { box-sizing: border-box; }
 
-/* ===== ГОРИЗОНТАЛЬНЫЙ ГРАДИЕНТНЫЙ ФОН ЗА ПРЕДЕЛАМИ САЙТА ===== */
+/* ===== ГРАДИЕНТНЫЙ ФОН ЗА ПРЕДЕЛАМИ САЙТА ===== */
 html {
   /* Светлая тема: тёмный край → светлый центр → тёмный край */
   background: linear-gradient(
@@ -14,6 +14,7 @@ html {
     #4a5568 100%
   );
   background-attachment: fixed;
+  background-size: cover;
   min-height: 100vh;
   transition: background 0.5s ease;
 }
@@ -29,20 +30,45 @@ html.theme-dark {
     #000000 100%
   );
   background-attachment: fixed;
+  background-size: cover;
 }
 
+/* 
+  Сам body имеет сплошной фон (var(--page-bg)). 
+  Так как у него есть max-width: 1180px и margin: 0 auto, 
+  он закрывает градиент только в центре (где находится сам сайт). 
+  За его пределами (по бокам) виден градиент html.
+*/
 body {
   font-family: 'Inter', 'Segoe UI', -apple-system, Arial, sans-serif;
   max-width: 1180px;
   margin: 0 auto;
-  padding: 0 20px 60px 20px;
+  padding: 0 20px;
   font-size: 15px;
   line-height: 1.6;
   color: var(--text);
+  
+  /* Фон самого сайта (монотонный) */
   background: var(--page-bg);
-  background-attachment: fixed;
+  background-attachment: fixed; 
+  
+  /* Flexbox для прижатия футера вниз */
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+  
   transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Динамическая высота для мобильных */
+@supports (min-height: 100dvh) {
+  html { min-height: 100dvh; }
+  body { min-height: 100dvh; }
+}
+
+/* Основной контент растягивается */
+main.ems-content {
+  flex: 1 0 auto;
 }
 
 /* ===== TOPBAR ===== */
@@ -112,7 +138,7 @@ body {
   align-items: center;
   gap: 14px;
   text-decoration: none;
-  margin-right: auto; /* Прижимает остальные блоки вправо */
+  margin-right: auto;
 }
 
 .ems-logo {
@@ -194,6 +220,7 @@ a { color: var(--accent); }
   margin: 40px -20px 0 -20px;
   padding: 20px;
   background: var(--panel);
+  flex-shrink: 0;
   transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 .footer-inner {
@@ -212,4 +239,5 @@ a { color: var(--accent); }
 @media (max-width: 700px) {
   .header-meta { display: none; }
   .footer-inner { justify-content: center; text-align: center; }
+  body { padding-bottom: 0; }
 }
