@@ -4,41 +4,44 @@
 
 /* ===== ГРАДИЕНТНЫЙ ФОН ЗА ПРЕДЕЛАМИ САЙТА ===== */
 html {
-  /* Светлая тема: тёмный край → светлый центр → тёмный край */
+  /* Светлая тема */
   background: linear-gradient(
     90deg,
     #4a5568 0%,
-    #9aa5b4 20%,
-    #eef1f5 50%,
-    #9aa5b4 80%,
+    #9aa5b4 10%,
+    #eef1f5 19%,
+    #eef1f5 81%,
+    #9aa5b4 90%,
     #4a5568 100%
   );
-  background-attachment: fixed;
   background-size: cover;
+  background-repeat: no-repeat;
   min-height: 100vh;
   transition: background 0.5s ease;
 }
 
-/* Тёмная тема: чёрный край → тёмно-синий центр → чёрный край */
+/* Тёмная тема */
 html.theme-dark {
   background: linear-gradient(
     90deg,
     #000000 0%,
-    #060b14 20%,
-    #162338 50%,
-    #060b14 80%,
+    #060b14 10%,
+    #162338 19%,
+    #162338 81%,
+    #060b14 90%,
     #000000 100%
   );
-  background-attachment: fixed;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
-/* 
-  Сам body имеет сплошной фон (var(--page-bg)). 
-  Так как у него есть max-width: 1180px и margin: 0 auto, 
-  он закрывает градиент только в центре (где находится сам сайт). 
-  За его пределами (по бокам) виден градиент html.
-*/
+/* Для мобильных устройств используем dvh, чтобы учитывать адресную строку браузера */
+@supports (min-height: 100dvh) {
+  html {
+    min-height: 100dvh;
+  }
+}
+
 body {
   font-family: 'Inter', 'Segoe UI', -apple-system, Arial, sans-serif;
   max-width: 1180px;
@@ -50,7 +53,6 @@ body {
   
   /* Фон самого сайта (монотонный) */
   background: var(--page-bg);
-  background-attachment: fixed; 
   
   /* Flexbox для прижатия футера вниз */
   display: flex;
@@ -58,12 +60,6 @@ body {
   min-height: 100vh;
   
   transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-/* Динамическая высота для мобильных */
-@supports (min-height: 100dvh) {
-  html { min-height: 100dvh; }
-  body { min-height: 100dvh; }
 }
 
 /* Основной контент растягивается */

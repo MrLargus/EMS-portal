@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,10 @@
   <link rel="stylesheet" href="../css/portal.css">
   <link rel="stylesheet" href="../css/themes.css">
   <style>
-    html { background: #f0f2f5; transition: none; }
-    html.theme-dark { background: #0b1320; }
-    
+    html {
+      transition: none;
+    }
+
     /* Стили для картинок в разделе информации */
     .info-image {
       width: 100%;
@@ -23,7 +25,7 @@
       margin-top: 10px;
       display: block;
     }
-    
+
     .image-caption {
       font-size: 13px;
       color: var(--text-dim);
@@ -35,6 +37,7 @@
   </style>
   <script src="../js/theme-init.js"></script>
 </head>
+
 <body class="theme-light">
 
   <div class="topbar">
@@ -96,11 +99,12 @@
         <h1>Общая информация</h1>
 
         <h2>01 - О департаменте</h2>
-        <p>Emergency Medical Service (EMS) - государственная структура, обеспечивающая медицинскую помощь гражданам штата, проведение освидетельствований и психологическую поддержку сотрудников других фракций.</p>
+        <p>Emergency Medical Service (EMS) - государственная структура, обеспечивающая медицинскую помощь гражданам
+          штата, проведение освидетельствований и психологическую поддержку сотрудников других фракций.</p>
 
         <h2>02 - Обозначения формы</h2>
         <p>Сотрудники EMS делятся на основной и руководящий составы. Обратите внимание на отличия в форме:</p>
-        
+
         <!-- ПЕРВАЯ КАРТИНКА (Форма) -->
         <img src="../assets/form.jpg" alt="Форма сотрудников EMS" class="info-image">
         <div class="image-caption">Основной состав (слева) и Руководящий состав (справа)</div>
@@ -109,7 +113,8 @@
         <p>Во время собраний сотрудники занимают строго определённые места на подземной парковке:</p>
         <ul>
           <li><strong>Старшие сотрудники</strong> встают вдоль жёлтых столбов.</li>
-          <li><strong>Остальные сотрудники</strong> (парамедики, интерны и т.д.) встают вдоль стены, согласно изображению.</li>
+          <li><strong>Остальные сотрудники</strong> (парамедики, интерны и т.д.) встают вдоль стены, согласно
+            изображению.</li>
         </ul>
 
         <!-- ВТОРАЯ КАРТИНКА (Парковка) -->
@@ -129,16 +134,16 @@
 
   <!-- Подключаем базу новостей -->
   <script src="../js/news-data.js"></script>
-  
+
   <!-- Скрипт генерации карточек новостей и переключения вкладок -->
   <script>
     // 1. Генерация новостей
     document.addEventListener('DOMContentLoaded', () => {
       const container = document.getElementById('news-feed-container');
       if (!container) return;
-      
+
       container.innerHTML = '';
-      
+
       if (!NEWS_DATA || NEWS_DATA.length === 0) {
         container.innerHTML = '<div class="empty-news">Пока нет новостей</div>';
         return;
@@ -195,7 +200,7 @@
         tab.addEventListener('click', () => {
           const name = tab.dataset.tab;
           activateTab(name);
-          try { localStorage.setItem(STORAGE_KEY, name); } catch (e) {}
+          try { localStorage.setItem(STORAGE_KEY, name); } catch (e) { }
         });
       });
     })();
@@ -203,4 +208,5 @@
 
   <script src="../js/theme.js"></script>
 </body>
+
 </html>

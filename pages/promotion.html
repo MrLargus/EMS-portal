@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +9,16 @@
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/portal.css">
   <link rel="stylesheet" href="../css/themes.css">
-  <!-- Подключаем стили для страницы повышения -->
   <link rel="stylesheet" href="../css/promotion.css">
-  
+
   <style>
-    /* Критический инлайн-стиль для предотвращения белой вспышки при загрузке */
-    html { background: #f0f2f5; transition: none; }
-    html.theme-dark { background: #0b1320; }
+    html {
+      transition: none;
+    }
   </style>
   <script src="../js/theme-init.js"></script>
 </head>
+
 <body class="theme-light">
 
   <div class="topbar">
@@ -63,10 +64,10 @@
 
       <!-- Шаг 2: Контент (Иерархия) -->
       <div id="pane-hierarchy" class="doc-pane active">
-        
+
         <div class="hierarchy-card">
           <div class="hierarchy-header">Иерархия должностей EMS</div>
-          
+
           <div class="hierarchy-grid">
             <div class="hierarchy-row top-rank">
               <div class="hierarchy-col-rank">1</div>
@@ -116,12 +117,13 @@
 
       <!-- Шаг 2: Контент (Повышения) -->
       <div id="pane-promotion" class="doc-pane" style="display: none;">
-        <p id="promoInstruction" style="margin-bottom: 15px; color: var(--text-dim);">Выберите текущую должность, чтобы узнать, как получить повышение:</p>
-        
+        <p id="promoInstruction" style="margin-bottom: 15px; color: var(--text-dim);">Выберите текущую должность, чтобы
+          узнать, как получить повышение:</p>
+
         <div class="promo-selector" id="promoList">
           <!-- Сюда JS вставит плитки -->
         </div>
-        
+
         <!-- Блок с деталями (скрыт по умолчанию) -->
         <div id="promoDetails" class="promo-details-box">
           <button class="back-to-selection-btn" onclick="backToSelection()">⬅ Вернуться к выбору</button>
@@ -142,10 +144,9 @@
 
   <div id="toast" class="toast">✅ Скопировано!</div>
 
-  <!-- Подключаем базу повышений -->
   <script src="../js/promotions-data.js"></script>
   <script src="../js/theme.js"></script>
-  
+
   <script>
     // 1. Рендер списка плиток (БЕЗ ИКОНОК)
     document.addEventListener('DOMContentLoaded', () => {
@@ -170,11 +171,9 @@
       const promo = PROMOTIONS.find(p => p.id === id);
       if (!promo) return;
 
-      // Скрываем сетку плиток
       document.getElementById('promoList').classList.add('hidden');
       document.getElementById('promoInstruction').style.display = 'none';
 
-      // Показываем блок с деталями
       const details = document.getElementById('promoDetails');
       const title = document.getElementById('promoDetailTitle');
       const content = document.getElementById('promoDetailContent');
@@ -183,19 +182,16 @@
       if (promo.subtitle) {
         title.innerHTML += `<div class="promo-detail-subtitle">${promo.subtitle}</div>`;
       }
-      
+
       content.innerHTML = promo.content;
-      
+
       details.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // 3. Возврат к выбору
     function backToSelection() {
-      // Скрываем детали
       document.getElementById('promoDetails').classList.remove('active');
-      
-      // Показываем сетку плиток
       document.getElementById('promoList').classList.remove('hidden');
       document.getElementById('promoInstruction').style.display = 'block';
     }
@@ -205,12 +201,11 @@
       document.querySelectorAll('#mainTabs .doc-tab').forEach(t => {
         t.classList.toggle('active', t.dataset.tab === tabName);
       });
-      
+
       document.getElementById('pane-hierarchy').style.display = tabName === 'hierarchy' ? 'block' : 'none';
       document.getElementById('pane-promotion').style.display = tabName === 'promotion' ? 'block' : 'none';
-      
+
       if (tabName === 'hierarchy') {
-        // Если ушли на другую вкладку, сбрасываем выбор, чтобы при возврате был список
         backToSelection();
       }
     }
@@ -219,7 +214,7 @@
     function copyTemplate(elementId) {
       const template = document.getElementById(elementId);
       if (!template) return;
-      
+
       const textToCopy = template.innerText;
       navigator.clipboard.writeText(textToCopy).then(() => {
         showToast('✅ Скопировано!');
@@ -243,4 +238,5 @@
   </script>
 
 </body>
+
 </html>

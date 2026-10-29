@@ -4,19 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EMS | Психологический протокол</title>
+  <title>EMS | Правила и Регламент</title>
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
-
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/portal.css">
   <link rel="stylesheet" href="../css/themes.css">
-  <link rel="stylesheet" href="../css/form.css">
-  <link rel="stylesheet" href="../css/result.css">
-  <link rel="stylesheet" href="../css/certificate.css">
-  
   <style>
-    html { background: #f0f2f5; transition: none; }
-    html.theme-dark { background: #0b1320; }
+    html {
+      transition: none;
+    }
   </style>
   <script src="../js/theme-init.js"></script>
 </head>
@@ -26,10 +22,8 @@
   <!-- ===== TOPBAR ===== -->
   <div class="topbar">
     <div class="topbar-inner">
-      <span class="topbar-left">EMS // DOC: PSYCHOLOGICAL PROTOCOL</span>
-      <span class="topbar-right">
-        <span class="status-dot"></span> INTERNAL
-      </span>
+      <span class="topbar-left">EMS // DOC: RULES & REGULATIONS</span>
+      <span class="topbar-right"><span class="status-dot"></span> INTERNAL</span>
     </div>
   </div>
 
@@ -40,7 +34,7 @@
         <img src="../assets/logo-star.svg" alt="EMS" class="ems-logo">
         <div class="ems-header-text">
           <span class="ems-title">EMERGENCY MEDICAL SERVICE</span>
-          <span class="ems-subtitle">Психологический протокол — На главную</span>
+          <span class="ems-subtitle">Правила и Регламент</span>
         </div>
       </a>
 
@@ -52,84 +46,816 @@
   </header>
 
   <main class="ems-content">
+    <a href="../index.html" class="back-link">⬅ НА ГЛАВНУЮ</a>
 
-    <!-- ===== START SCREEN ===== -->
-    <div id="startScreen">
-      <a href="../index.html" class="back-link">⬅ НА ГЛАВНУЮ</a>
+    <!-- ===== TABS ===== -->
+    <div class="doc-tabs" role="tablist">
+      <button class="doc-tab" data-tab="faction" role="tab">
+        <span class="tab-code">01</span>
+        <span class="tab-label">Правила фракции</span>
+      </button>
+      <button class="doc-tab active" data-tab="regulation" role="tab">
+        <span class="tab-code">02</span>
+        <span class="tab-label">Регламент работы EMS</span>
+      </button>
 
-      <h1>Протокол медосвидетельствования</h1>
-      <div class="subtitle">Выберите необходимый протокол тестирования</div>
+      <!-- ПОМЕНЯЛИ МЕСТАМИ: Правила Discord теперь 3-и -->
+      <button class="doc-tab" data-tab="discord-rules" role="tab">
+        <span class="tab-code">03</span>
+        <span class="tab-label">Правила Discord</span>
+      </button>
 
-      <div class="menu-grid">
-        <button class="menu-btn" onclick="openNormalModal()">
-          <span class="btn-title">Стандартный тест</span>
-          <span class="btn-subtitle">Тест психического здоровья</span>
-        </button>
-        <button class="menu-btn special" onclick="openSpecialModal()">
-          <span class="btn-title">Углублённый тест</span>
-          <span class="btn-subtitle">Расширенная проверка для повторного тестирования либо по личной просьбе старшего состава</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- ===== NORMAL TEST ===== -->
-    <div id="normalTestWrapper" style="display: none;">
-      <button class="back-btn" onclick="goToMenu()">⬅ Вернуться в главное меню</button>
-
-      <h1>Психологический тест</h1>
-      <div class="subtitle">Заполните данные и ответьте на вопросы</div>
-
-      <div class="patient-fields">
-        <label for="patientName">Имя и фамилия сотрудника:</label>
-        <input type="text" id="patientName" placeholder="Например: Иван Петров" autocomplete="off">
-
-        <label for="doctorName">Имя и фамилия врача:</label>
-        <input type="text" id="doctorName" class="doctor-input" placeholder="Например: Александр Смирнов"
-          autocomplete="off">
-      </div>
-
-      <form id="quiz"></form>
-
-      <div class="form-actions">
-        <button onclick="checkAnswers('normal')">Завершить и проверить</button>
-        <button class="secondary" onclick="resetQuiz()">Очистить форму</button>
-      </div>
-
-      <div id="result"></div>
-
-      <button class="gen-btn" id="genBtn" onclick="generateCertificate()" style="display:none;">
-        Сформировать справку
+      <!-- ПОМЕНЯЛИ МЕСТАМИ: Регламент Discord теперь 4-й -->
+      <button class="doc-tab" data-tab="discord" role="tab">
+        <span class="tab-code">04</span>
+        <span class="tab-label">Регламент Discord</span>
       </button>
     </div>
 
-    <!-- ===== SPECIAL TEST ===== -->
-    <div id="specialTestWrapper" style="display: none;">
-      <button class="back-btn" onclick="goToMenu()">⬅ Вернуться в главное меню</button>
+    <!-- ============================================================
+         TAB 1: ПРАВИЛА ФРАКЦИИ
+         ============================================================ -->
+    <div class="doc-pane" id="pane-faction" style="display:none;">
+      <div class="page-content">
+        <h1>Правила фракции EMS и система наказаний</h1>
 
-      <h1>Углублённый психологический тест</h1>
-      <div class="subtitle">Заполните данные и ответьте на вопросы</div>
+        <div class="info-box">
+          Для поддержания дисциплины, порядка и высокого уровня RP каждый сотрудник EMS обязан соблюдать
+          установленные правила фракции. За нарушения предусмотрены дисциплинарные взыскания в зависимости
+          от тяжести проступка и количества повторных нарушений.
+        </div>
 
-      <div class="patient-fields">
-        <label for="specialPatientName">Имя и фамилия сотрудника:</label>
-        <input type="text" id="specialPatientName" placeholder="Например: Иван Петров" autocomplete="off">
+        <div class="warning-box">
+          <strong>Важно</strong>
+          Правила и система наказаний могут редактироваться, дополняться и обновляться по мере развития фракции.
+        </div>
 
-        <label for="specialDoctorName">Имя и фамилия врача:</label>
-        <input type="text" id="specialDoctorName" class="doctor-input" placeholder="Например: Александр Смирнов"
-          autocomplete="off">
+        <!-- БЛОК 1 -->
+        <div class="doc-block">
+          <div class="block-header">01 - Транспорт</div>
+
+          <div class="block-item">
+            <div class="item-title">1.1. Адекватное вождение</div>
+            <p class="item-text">Запрещено ездить по встречной полосе без веской RP-причины.</p>
+            <p class="item-text">Запрещено передвигаться на транспорте по горам и местности, не предназначенной для
+              данного вида транспорта.</p>
+            <p class="item-text">Сотрудник обязан соблюдать правила дорожного движения и адекватно управлять служебным
+              транспортом.</p>
+            <div class="penalty-title">Наказания</div>
+            <ul class="penalty-list">
+              <li>1-е нарушение - устное предупреждение.</li>
+              <li>2-е нарушение - устное предупреждение.</li>
+              <li>3-е нарушение - понижение в должности.</li>
+              <li>4-е нарушение - увольнение из фракции.</li>
+            </ul>
+          </div>
+
+          <div class="block-item">
+            <div class="item-title">1.2. Выключение двигателя</div>
+            <p class="item-text">Перед выходом из транспортного средства необходимо заглушить двигатель.</p>
+            <div class="penalty-title">Наказания</div>
+            <ul class="penalty-list">
+              <li>1-е нарушение - устное предупреждение.</li>
+              <li>2-е нарушение - устное предупреждение.</li>
+              <li>3-е нарушение - понижение в должности.</li>
+              <li>4-е нарушение - увольнение из фракции.</li>
+            </ul>
+          </div>
+
+          <div class="block-item">
+            <div class="item-title">1.3. Закрытые двери транспорта</div>
+            <p class="item-text">При использовании служебного транспорта необходимо следить, чтобы двери автомобиля были
+              закрыты.</p>
+            <div class="penalty-title">Наказания</div>
+            <ul class="penalty-list">
+              <li>1-е нарушение - устное предупреждение.</li>
+              <li>2-е нарушение - устное предупреждение.</li>
+              <li>3-е нарушение - понижение в должности.</li>
+              <li>4-е нарушение - увольнение из фракции.</li>
+            </ul>
+          </div>
+
+          <div class="block-item">
+            <div class="item-title">1.4. Угон транспорта коллег</div>
+            <p class="item-text">Категорически запрещается забирать транспорт своего коллеги без его разрешения.</p>
+            <div class="penalty-title">Наказания</div>
+            <ul class="penalty-list">
+              <li>1-е нарушение - устное предупреждение.</li>
+              <li>2-е нарушение - понижение в должности.</li>
+              <li>3-е нарушение - увольнение из фракции.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- БЛОК 2 -->
+        <div class="doc-block">
+          <div class="block-header">02 - Поведение и взаимодействие</div>
+
+          <div class="block-item">
+            <div class="item-title">2.1. Ненормативная лексика</div>
+            <p class="item-text">Запрещено использовать ненормативную лексику в общении на сервере во время смены EMS.
+            </p>
+            <p class="item-text">Сотрудник обязан сохранять профессионализм, вежливость и уважительное отношение к
+              окружающим.</p>
+            <div class="penalty-title">Наказания</div>
+            <ul class="penalty-list">
+              <li>1-е нарушение - устное предупреждение.</li>
+              <li>2-е нарушение - устное предупреждение.</li>
+              <li>3-е нарушение - понижение в должности.</li>
+              <li>4-е нарушение - увольнение из фракции.</li>
+            </ul>
+          </div>
+
+          <div class="block-item">
+            <div class="item-title">2.2. DM и DB без причины</div>
+            <p class="item-text">Запрещено совершать DM и DB без обоснованной RP-причины.</p>
+            <div class="penalty-title">Наказания</div>
+            <ul class="penalty-list">
+              <li>1-е нарушение - устное предупреждение.</li>
+              <li>2-е нарушение - понижение в должности.</li>
+              <li>3-е нарушение - увольнение из фракции.</li>
+            </ul>
+          </div>
+
+          <div class="block-item">
+            <div class="item-title">2.3. Оскорбление сотрудников EMS</div>
+            <p class="item-text">Запрещены оскорбления, унижение и намеренное провоцирование конфликтов с сотрудниками
+              EMS.</p>
+            <p class="item-text">Рабочие разногласия необходимо решать корректно, при необходимости обращаясь к
+              руководству.</p>
+            <div class="penalty-title">Наказания</div>
+            <ul class="penalty-list">
+              <li>1-е нарушение - устное предупреждение.</li>
+              <li>2-е нарушение - понижение в должности.</li>
+              <li>3-е нарушение - увольнение из фракции.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- БЛОК 3 -->
+        <div class="doc-block">
+          <div class="block-header">03 - Общие правила</div>
+
+          <div class="block-item">
+            <div class="item-title">3.1. Поднятие чужого оружия</div>
+            <p class="item-text">Запрещено поднимать и присваивать чужое оружие во время смены EMS.</p>
+            <div class="penalty-title">Наказания</div>
+            <ul class="penalty-list">
+              <li>1-е нарушение - устное предупреждение.</li>
+              <li>2-е нарушение - понижение в должности.</li>
+              <li>3-е нарушение - увольнение из фракции.</li>
+            </ul>
+          </div>
+
+          <div class="block-item">
+            <div class="item-title">3.2. Препятствование работе LSPD</div>
+            <p class="item-text">Запрещено намеренно препятствовать выполнению служебных обязанностей сотрудниками LSPD.
+            </p>
+            <p class="item-text">Необходимо выполнять законные требования сотрудников правоохранительных органов в
+              рамках игровых правил и действующих RP-ситуаций.</p>
+            <div class="penalty-title">Наказания</div>
+            <ul class="penalty-list">
+              <li>1-е нарушение - устное предупреждение.</li>
+              <li>2-е нарушение - понижение в должности.</li>
+              <li>3-е нарушение - увольнение из фракции.</li>
+            </ul>
+          </div>
+
+          <div class="block-item">
+            <div class="item-title">3.3. Использование масок</div>
+            <p class="item-text">Запрещено носить маски во время смены EMS.</p>
+            <div class="penalty-title">Наказания</div>
+            <ul class="penalty-list">
+              <li>1-е нарушение - устное предупреждение.</li>
+              <li>2-е нарушение - устное предупреждение.</li>
+              <li>3-е нарушение - понижение в должности.</li>
+              <li>4-е нарушение - увольнение из фракции.</li>
+            </ul>
+          </div>
+
+          <div class="block-item">
+            <div class="item-title">3.4. Использование личного транспорта</div>
+            <p class="item-text">Запрещено использовать личный транспорт во время смены EMS.</p>
+            <p class="item-text">Для выполнения служебных обязанностей необходимо пользоваться транспортом фракции.</p>
+            <div class="penalty-title">Наказания</div>
+            <ul class="penalty-list">
+              <li>1-е нарушение - устное предупреждение.</li>
+              <li>2-е нарушение - устное предупреждение.</li>
+              <li>3-е нарушение - понижение в должности.</li>
+              <li>4-е нарушение - увольнение из фракции.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- БЛОК 4: Примечания -->
+        <div class="doc-block">
+          <div class="block-header">! - Важные примечания</div>
+
+          <div class="info-box">
+            <strong>Особые условия для ранга «Интерн»</strong>
+            Если за нарушение предусмотрено понижение в должности, для сотрудника ранга «Интерн»
+            применяется увольнение из фракции, поскольку дальнейшее понижение невозможно.
+          </div>
+
+          <div class="info-box">
+            <strong>Учёт обстоятельств</strong>
+            Руководящий состав вправе учитывать обстоятельства нарушения, его тяжесть и последствия
+            при выборе дисциплинарного взыскания.
+          </div>
+
+          <div class="info-box">
+            <strong>Повторные нарушения</strong>
+            Попытки намеренно обходить правила или повторять нарушения после получения предупреждений
+            могут повлечь более строгое наказание в соответствии с внутренними регламентами фракции.
+          </div>
+
+          <div class="info-box" style="border-left-color: var(--teal); background: var(--teal-soft);">
+            <strong>Утверждено:</strong> Главный врач EMS &nbsp;-&nbsp; <strong>@Anasteysha Tsepesh</strong>
+          </div>
+        </div>
+
       </div>
+    </div>
 
-      <form id="specialQuiz"></form>
+    <!-- ============================================================
+         TAB 2: РЕГЛАМЕНТ EMS
+         ============================================================ -->
+    <div class="doc-pane active" id="pane-regulation">
+      <div class="page-content">
+        <h1>Регламент работы EMS</h1>
 
-      <div class="form-actions">
-        <button onclick="checkAnswers('special')">Завершить и проверить</button>
-        <button class="secondary" onclick="resetQuiz()">Очистить форму</button>
+        <div class="info-box">
+          <strong>Организация:</strong> Emergency Medical Services (EMS)<br>
+          <strong>Тип документа:</strong> Внутренний регламент медицинской организации
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">Глава I - Общие положения</div>
+          <div class="block-item">
+            <div class="item-title">1.1</div>
+            <p class="item-text">EMS - государственная медицинская организация, осуществляющая оказание медицинской
+              помощи гражданам штата.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">1.2</div>
+            <p class="item-text">Каждый сотрудник EMS обязан соблюдать настоящий регламент, правила сервера, правила
+              Role Play и распоряжения руководящего состава.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">1.3</div>
+            <p class="item-text">Основными задачами EMS являются:</p>
+            <ul>
+              <li>Оказание первой и квалифицированной медицинской помощи.</li>
+              <li>Реагирование на вызовы граждан и государственных организаций.</li>
+              <li>Транспортировка пациентов в медицинские учреждения.</li>
+              <li>Проведение медицинских осмотров и оказание плановой помощи.</li>
+              <li>Поддержание порядка и профессиональной дисциплины в фракции.</li>
+            </ul>
+          </div>
+          <div class="block-item">
+            <div class="item-title">1.4</div>
+            <p class="item-text">Каждый сотрудник обязан соблюдать субординацию, проявлять уважение к гражданам и
+              коллегам, а также поддерживать деловую репутацию фракции.</p>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">Глава II - Обязанности сотрудников</div>
+          <div class="block-item">
+            <div class="item-title">2.1</div>
+            <p class="item-text">Сотрудник EMS обязан:</p>
+            <ul>
+              <li>Иметь опрятный внешний вид и соответствующую должности форму.</li>
+              <li>Использовать служебный транспорт исключительно в рабочих целях.</li>
+              <li>Своевременно принимать и выполнять поступающие вызовы.</li>
+              <li>Оказывать помощь гражданам независимо от их статуса и положения.</li>
+              <li>Соблюдать правила дорожного движения и техники безопасности.</li>
+              <li>Докладывать руководству о происшествиях, нарушениях и сложных ситуациях.</li>
+            </ul>
+          </div>
+          <div class="block-item">
+            <div class="item-title">2.2</div>
+            <p class="item-text">Сотрудник обязан выполнять распоряжения старшего состава, если они не противоречат
+              правилам сервера и действующим нормативным документам.</p>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">Глава III - Порядок принятия и выполнения вызовов</div>
+          <div class="block-item">
+            <div class="item-title">3.1</div>
+            <p class="item-text">После получения вызова сотрудник обязан ознакомиться с его содержанием и уточнить
+              необходимую информацию.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">3.2</div>
+            <p class="item-text">Во время движения к месту происшествия сотрудник обязан соблюдать правила дорожного
+              движения, учитывая разрешённый режим использования специальных сигналов.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">3.3</div>
+            <p class="item-text">По прибытии на место сотрудник должен:</p>
+            <ul>
+              <li>Оценить обстановку и убедиться в безопасности оказания помощи.</li>
+              <li>Установить состояние пострадавшего.</li>
+              <li>Оказать медицинскую помощь в рамках игровых возможностей и должностных полномочий.</li>
+              <li>При необходимости организовать транспортировку пациента в больницу.</li>
+            </ul>
+          </div>
+          <div class="block-item">
+            <div class="item-title">3.4</div>
+            <p class="item-text">При массовых происшествиях сотрудник обязан действовать с учётом указаний старшего
+              медицинского персонала и доступных ресурсов.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">3.5</div>
+            <p class="item-text">Запрещается игнорировать вызовы без уважительной причины или использовать служебное
+              положение в личных целях.</p>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">Глава IV - Правила оказания медицинской помощи</div>
+          <div class="block-item">
+            <div class="item-title">4.1</div>
+            <p class="item-text">Медицинская помощь оказывается в соответствии с игровой механикой сервера и
+              установленными RP-процедурами.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">4.2</div>
+            <p class="item-text">Сотрудник обязан отыгрывать медицинские действия в соответствии с правилами Role Play,
+              если такие отыгровки предусмотрены сервером.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">4.3</div>
+            <p class="item-text">Запрещается:</p>
+            <ul>
+              <li>Намеренно отказывать в помощи без обоснованной причины.</li>
+              <li>Нарушать правила сервера при взаимодействии с пациентами.</li>
+              <li>Разглашать служебную информацию без разрешения руководства, если она относится к охраняемым сведениям
+                по правилам сервера.</li>
+            </ul>
+          </div>
+          <div class="block-item">
+            <div class="item-title">4.4</div>
+            <p class="item-text">При необходимости госпитализации сотрудник должен обеспечить безопасную транспортировку
+              пациента в медицинское учреждение.</p>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">Глава V - Служебный транспорт и имущество</div>
+          <div class="block-item">
+            <div class="item-title">5.1</div>
+            <p class="item-text">Служебный транспорт используется исключительно для выполнения должностных обязанностей.
+            </p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">5.2</div>
+            <p class="item-text">Сотруднику запрещается:</p>
+            <ul>
+              <li>Использовать служебный транспорт в личных целях.</li>
+              <li>Передавать управление посторонним лицам.</li>
+              <li>Оставлять транспорт в местах, препятствующих движению или работе экстренных служб.</li>
+              <li>Намеренно повреждать служебное имущество.</li>
+              <li>Использовать специальные сигналы без служебной необходимости.</li>
+            </ul>
+          </div>
+          <div class="block-item">
+            <div class="item-title">5.3</div>
+            <p class="item-text">После завершения смены сотрудник обязан вернуть служебный транспорт на предусмотренную
+              стоянку, если этого требуют правила фракции.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">5.4</div>
+            <p class="item-text">Сотрудник несёт ответственность за сохранность закреплённого за ним имущества в
+              пределах правил сервера и внутренних нормативных документов.</p>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">Глава VI - Субординация и служебная дисциплина</div>
+          <div class="block-item">
+            <div class="item-title">6.1</div>
+            <p class="item-text">Сотрудник обязан соблюдать иерархию фракции и обращаться к старшему составу в
+              установленной форме.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">6.2</div>
+            <p class="item-text">Запрещается:</p>
+            <ul>
+              <li>Оскорблять коллег, руководство и граждан.</li>
+              <li>Провоцировать конфликты на рабочем месте.</li>
+              <li>Игнорировать законные распоряжения руководства.</li>
+              <li>Нарушать рабочую дисциплину и мешать выполнению служебных задач.</li>
+              <li>Использовать служебные каналы связи для личных конфликтов.</li>
+            </ul>
+          </div>
+          <div class="block-item">
+            <div class="item-title">6.3</div>
+            <p class="item-text">Все разногласия между сотрудниками должны решаться в установленном порядке через
+              непосредственного руководителя или кадровое подразделение.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">6.4</div>
+            <p class="item-text">Руководящий состав обязан контролировать работу подчинённых, проводить инструктажи и
+              принимать меры по устранению нарушений.</p>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">Глава VII - Взаимодействие с государственными организациями</div>
+          <div class="block-item">
+            <div class="item-title">7.1</div>
+            <p class="item-text">EMS взаимодействует с полицией, пожарно-спасательными подразделениями и другими
+              государственными структурами в пределах полномочий, установленных правилами сервера.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">7.2</div>
+            <p class="item-text">При совместных операциях сотрудники EMS обязаны соблюдать согласованный порядок
+              действий и указания ответственных лиц в пределах их компетенции.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">7.3</div>
+            <p class="item-text">При угрозе безопасности медицинского персонала сотрудник вправе отойти в безопасную
+              зону до устранения угрозы, если это не противоречит правилам сервера.</p>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">Глава VIII - Ответственность и дисциплинарные меры</div>
+          <div class="block-item">
+            <div class="item-title">8.1</div>
+            <p class="item-text">За нарушение настоящего регламента сотрудник может быть привлечён к дисциплинарной
+              ответственности.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">8.2</div>
+            <p class="item-text">В зависимости от тяжести нарушения могут применяться:</p>
+            <ul>
+              <li>Устное предупреждение.</li>
+              <li>Выговор.</li>
+              <li>Штраф в размере, указанном правилами наказаний.</li>
+              <li>Понижение в должности.</li>
+              <li>Отстранение от выполнения отдельных обязанностей.</li>
+              <li>Увольнение из фракции.</li>
+            </ul>
+          </div>
+          <div class="block-item">
+            <div class="item-title">8.3</div>
+            <p class="item-text">При выборе меры учитываются тяжесть нарушения, обстоятельства произошедшего и наличие
+              предыдущих взысканий.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">8.4</div>
+            <p class="item-text">Решение о дисциплинарном взыскании принимается уполномоченным руководителем.</p>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">Глава IX - Заключительные положения</div>
+          <div class="block-item">
+            <div class="item-title">9.1</div>
+            <p class="item-text">Каждый сотрудник EMS обязан ознакомиться с настоящим регламентом перед началом
+              самостоятельного выполнения служебных обязанностей.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">9.2</div>
+            <p class="item-text">Незнание регламента не освобождает сотрудника от ответственности за его нарушение.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">9.3</div>
+            <p class="item-text">Изменения и дополнения в регламент вносятся руководством фракции.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">9.4</div>
+            <p class="item-text">Настоящий регламент вступает в силу после утверждения руководством EMS.</p>
+          </div>
+        </div>
+
+        <div class="info-box" style="margin-top: 40px; border-left-color: var(--teal); background: var(--teal-soft);">
+          <strong>Утверждено:</strong> Главный врач EMS &nbsp;-&nbsp; <strong>@Anasteysha Tsepesh</strong>
+        </div>
       </div>
+    </div>
 
-      <div id="specialResult"></div>
+    <!-- ============================================================
+         TAB 3: ПРАВИЛА DISCORD (НОВЫЕ)
+         ============================================================ -->
+    <div class="doc-pane" id="pane-discord-rules" style="display:none;">
+      <div class="page-content">
+        <h1>Правила поведения на фракционном Discord-сервере</h1>
 
-      <button class="gen-btn" id="specialGenBtn" onclick="generateCertificate()" style="display:none;">
-        Сформировать справку
-      </button>
+        <div class="info-box">
+          <strong>Важно:</strong> Действующие правила обязательны к исполнению всеми участниками фракционного
+          Discord-сервера.<br><br>
+          Незнание действующих правил не освобождает пользователя от ответственности.
+        </div>
+
+        <!-- БЛОК 1: Общие положения и модерация -->
+        <div class="doc-block">
+          <div class="block-header">01 - Общие положения</div>
+
+          <div class="block-item">
+            <p class="item-text">Модераторами фракционного Discord-сервера являются: <strong>куратор фракции,
+                администрация, лидер</strong>.</p>
+            <p class="item-text">Модерация и руководство фракции оставляют за собой право назначать наказания по своему
+              усмотрению в зависимости от тяжести нарушения.</p>
+            <div class="penalty-title">Доступные меры наказания</div>
+            <ul class="penalty-list">
+              <li>Устное предупреждение</li>
+              <li>MUTE (временное ограничение общения)</li>
+              <li>KICK с Discord-сервера фракции</li>
+              <li>BAN на Discord-сервере фракции</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- БЛОК 2: Оформление профиля -->
+        <div class="doc-block">
+          <div class="block-header">02 - Оформление профиля (Никнейм)</div>
+
+          <div class="block-item">
+            <p class="item-text">Каждый участник Discord-сервера фракции должен указать никнейм <strong>строго по
+                форме:</strong></p>
+            <p class="item-text"><code>Отдел/Должность | Никнейм | StaticID</code></p>
+            <p class="item-text">Пример: <code>Руководитель | Роберт Мур | #2</code></p>
+
+            <div class="warning-box">
+              <strong>Внимание:</strong> Пользователи, не состоящие во фракции или отказывающиеся указать никнейм по
+              форме, будут исключены из Discord-сервера фракции.
+            </div>
+
+            <div class="info-box">
+              <strong>Исключение:</strong> сотрудники других государственных фракций, адвокаты, внесенные в реестр.
+            </div>
+          </div>
+        </div>
+
+        <!-- БЛОК 3: Строгие запреты -->
+        <div class="doc-block">
+          <div class="block-header">03 - Запрещено</div>
+
+          <div class="block-item">
+            <p class="item-text">На фракционном Discord-сервере строго запрещается:</p>
+            <ul>
+              <li><strong>Флуд и спам.</strong></li>
+              <li><strong>Злоупотребление CapsLock.</strong></li>
+              <li><strong>Упоминание ролей everyone и here.</strong> <br><small>Для фракционных новостей и других важных
+                  публикаций есть основная роль фракции (EMS, LSPD).</small></li>
+              <li><strong>Любые формы оскорблений</strong>, провокаций, токсичного поведения.</li>
+              <li><strong>Дискриминация и разжигание конфликтов</strong> на почве национальности, расы, религии, пола.
+              </li>
+              <li><strong>Неадекватное поведение в чатах.</strong> <br><small>Запрещено без необходимости издавать
+                  громкие или мешающие звуки, включать музыку.</small></li>
+              <li><strong>Использование текстовых каналов не по назначению.</strong></li>
+              <li><strong>Слив информации</strong> с Discord-сервера фракции или личных данных других пользователей.
+              </li>
+              <li><strong>Реклама сторонних ресурсов, ссылок.</strong></li>
+              <li><strong>Публикации, содержащие NSFW-контент</strong>, пропаганду запрещенных веществ или организаций.
+                <br><small>Также описанное выше запрещено использовать в никнеймах.</small></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="warning-box" style="margin-top: 30px;">
+          Соблюдайте порядок, уважайте коллег и помните: <strong>дисциплина — основа эффективной работы EMS!</strong>
+        </div>
+
+        <div class="info-box" style="border-left-color: var(--teal); background: var(--teal-soft);">
+          <strong>Утверждено:</strong> Главный врач EMS &nbsp;-&nbsp; <strong>@Anasteysha Tsepesh</strong>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============================================================
+         TAB 4: РЕГЛАМЕНТ DISCORD (СТАРЫЙ)
+         ============================================================ -->
+    <div class="doc-pane" id="pane-discord" style="display:none;">
+      <div class="page-content">
+        <h1>Регламент поведения в Discord EMS</h1>
+
+        <div class="info-box">
+          <strong>Документ:</strong> Регламент поведения в Discord-сервере EMS<br>
+          <strong>Статус:</strong> Обязателен для всех участников сервера
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">01 - Общие положения</div>
+          <div class="block-item">
+            <div class="item-title">1.1</div>
+            <p class="item-text">Каждый участник Discord-сервера EMS обязан соблюдать настоящий регламент.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">1.2</div>
+            <p class="item-text">При вступлении на сервер участник автоматически соглашается с установленными правилами.
+            </p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">1.3</div>
+            <p class="item-text">Администрация сервера имеет право применять санкции за нарушение регламента.</p>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">02 - Правила общения</div>
+          <div class="block-item">
+            <div class="item-title">2.1</div>
+            <p class="item-text">Запрещены оскорбления, провокации, травля и унижение участников сервера.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">2.2</div>
+            <p class="item-text">Запрещены угрозы, дискриминация и разжигание конфликтов на почве национальности,
+              религии и других личных признаков.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">2.3</div>
+            <p class="item-text">Запрещены спам, флуд, массовое использование CAPS LOCK и злоупотребление упоминаниями
+              участников.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">2.4</div>
+            <p class="item-text">Запрещено распространение порнографических, шокирующих и иных запрещённых материалов.
+            </p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">2.5</div>
+            <p class="item-text">Запрещено публиковать личные данные участников без их согласия.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">2.6</div>
+            <p class="item-text">Все конфликты решаются в спокойной форме.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">2.7</div>
+            <p class="item-text">Запрещено намеренно провоцировать сотрудников и руководство EMS.</p>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">03 - Субординация</div>
+          <div class="block-item">
+            <div class="item-title">3.1</div>
+            <p class="item-text">Каждый сотрудник обязан уважительно относиться к коллегам независимо от должности.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">3.2</div>
+            <p class="item-text">При общении с руководством необходимо соблюдать деловой стиль общения.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">3.3</div>
+            <p class="item-text">Запрещено публично оскорблять руководство, сотрудников и другие подразделения.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">3.4</div>
+            <p class="item-text">Рабочие разногласия решаются через установленную иерархию организации.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">3.5</div>
+            <p class="item-text">Запрещено злоупотреблять должностными полномочиями и использовать звание для личных
+              конфликтов.</p>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">04 - Правила голосовых каналов</div>
+          <div class="block-item">
+            <div class="item-title">4.1</div>
+            <p class="item-text">Запрещено перебивать доклады, собеседования, собрания и рабочие переговоры.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">4.2</div>
+            <p class="item-text">Во время официальных мероприятий необходимо соблюдать тишину и выполнять указания
+              ответственных лиц.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">4.3</div>
+            <p class="item-text">Запрещены посторонние звуки, музыка, звуковые панели и намеренные помехи связи.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">4.4</div>
+            <p class="item-text">Микрофон должен быть настроен так, чтобы не создавать помех другим участникам.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">4.5</div>
+            <p class="item-text">Запрещено находиться в рабочих голосовых каналах с целью мешать работе сотрудников.</p>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">05 - Рабочие каналы EMS</div>
+          <div class="block-item">
+            <div class="item-title">5.1</div>
+            <p class="item-text">Рабочие каналы используются исключительно по назначению.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">5.2</div>
+            <p class="item-text">Запрещено публиковать сообщения не по теме в каналах для отчётов, заявлений, расписаний
+              и объявлений.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">5.3</div>
+            <p class="item-text">Все отчёты и заявления должны оформляться по установленным формам.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">5.4</div>
+            <p class="item-text">Запрещено подделывать отчёты, предоставлять ложную информацию и использовать чужие
+              документы без разрешения.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">5.5</div>
+            <p class="item-text">Запрещено удалять или изменять рабочую информацию без соответствующих полномочий.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">5.6</div>
+            <p class="item-text">Важные объявления и распоряжения руководства необходимо своевременно изучать.</p>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">06 - Никнейм и оформление профиля</div>
+          <div class="block-item">
+            <div class="item-title">6.1</div>
+            <p class="item-text">Никнейм должен быть понятным и не содержать оскорблений.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">6.2</div>
+            <p class="item-text">Запрещено выдавать себя за руководство, администрацию или другого сотрудника.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">6.3</div>
+            <p class="item-text">Запрещено использовать аватары, статусы и оформление профиля для провокаций и
+              распространения запрещённых материалов.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">6.4</div>
+            <p class="item-text">При наличии установленного формата никнейма сотрудник обязан его соблюдать.</p>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">07 - Запреты на сервере</div>
+          <div class="block-item">
+            <p class="item-text">На Discord-сервере EMS запрещается:</p>
+            <ul>
+              <li>Реклама сторонних серверов и проектов.</li>
+              <li>Распространение вредоносных ссылок и файлов.</li>
+              <li>Обход блокировок и наказаний с использованием дополнительных аккаунтов.</li>
+              <li>Злоупотребление функциями Discord.</li>
+              <li>Раскрытие служебной информации лицам, не имеющим соответствующего доступа.</li>
+              <li>Провоцирование конфликтов между сотрудниками EMS.</li>
+              <li>Игнорирование законных требований администрации Discord-сервера.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">08 - Система наказаний</div>
+          <div class="block-item">
+            <p class="item-text">За нарушения регламента могут применяться следующие меры:</p>
+            <ul>
+              <li>Устное предупреждение.</li>
+              <li>Письменное предупреждение.</li>
+              <li>Выговор или ограничение доступа к отдельным каналам.</li>
+              <li>Временный мут.</li>
+              <li>Кик или бан при серьёзных либо повторных нарушениях.</li>
+            </ul>
+            <p class="item-text">Мера наказания определяется администрацией с учётом тяжести нарушения, его последствий
+              и наличия предыдущих нарушений.</p>
+          </div>
+        </div>
+
+        <div class="doc-block">
+          <div class="block-header">09 - Заключительные положения</div>
+          <div class="block-item">
+            <div class="item-title">9.1</div>
+            <p class="item-text">Руководство EMS имеет право вносить изменения в регламент.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">9.2</div>
+            <p class="item-text">Все изменения вступают в силу после публикации в соответствующем канале.</p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">9.3</div>
+            <p class="item-text">При возникновении спорных ситуаций участник вправе обратиться к старшему руководству.
+            </p>
+          </div>
+          <div class="block-item">
+            <div class="item-title">9.4</div>
+            <p class="item-text">Каждый сотрудник EMS несёт ответственность за соблюдение правил и поддержание порядка
+              на сервере.</p>
+          </div>
+        </div>
+
+        <div class="warning-box" style="margin-top: 30px;">
+          Соблюдайте порядок, уважайте коллег и помните: <strong>дисциплина - основа эффективной работы EMS!</strong>
+        </div>
+
+        <div class="info-box" style="border-left-color: var(--teal); background: var(--teal-soft);">
+          <strong>Утверждено:</strong> Главный врач EMS &nbsp;-&nbsp; <strong>@Anasteysha Tsepesh</strong>
+        </div>
+      </div>
     </div>
 
   </main>
@@ -137,95 +863,50 @@
   <!-- ===== FOOTER ===== -->
   <footer class="ems-footer">
     <div class="footer-inner">
-      <span>© EMS SAN-ANDREAS — DEPARTMENT OF HEALTH</span>
+      <span>© EMS SAN-ANDREAS - DEPARTMENT OF HEALTH</span>
       <span>INTERNAL USE ONLY // НЕ ДЛЯ ГРАЖДАНСКИХ</span>
     </div>
   </footer>
 
-  <!-- ===== MODAL: NORMAL ===== -->
-  <div id="normalModal" class="modal-overlay" style="display: none;">
-    <div class="modal-content">
-      <h2>Выберите отдел</h2>
-      <p class="modal-subtitle">Для какого подразделения проводится стандартный тест?</p>
-      <div class="modal-grid">
-        <button class="modal-btn" onclick="startNormalTest('lspd')">LSPD</button>
-        <button class="modal-btn" onclick="startNormalTest('advocate')">Адвокатура</button>
-        <button class="modal-btn" onclick="startNormalTest('ems')">EMS</button>
-        <button class="modal-btn disabled" disabled onclick="startNormalTest('gov')">GOV</button>
-      </div>
-      <button class="modal-close" onclick="closeModal('normalModal')">Отмена</button>
-    </div>
-  </div>
+  <!-- ===== TAB SCRIPT ===== -->
+  <script>
+    (function () {
+      const tabs = document.querySelectorAll('.doc-tab');
+      const panes = document.querySelectorAll('.doc-pane');
 
-  <!-- ===== MODAL: SPECIAL ===== -->
-  <div id="specialModal" class="modal-overlay" style="display: none;">
-    <div class="modal-content">
-      <h2>Выберите отдел</h2>
-      <p class="modal-subtitle">Для какого подразделения проводится углублённый тест?</p>
-      <div class="modal-grid">
-        <button class="modal-btn" onclick="startSpecialTest('lspd')">LSPD</button>
-        <button class="modal-btn" onclick="startSpecialTest('advocate')">Адвокатура</button>
-        <button class="modal-btn disabled" disabled onclick="startSpecialTest('ems')">EMS</button>
-        <button class="modal-btn disabled" disabled onclick="startSpecialTest('gov')">GOV</button>
-      </div>
-      <button class="modal-close" onclick="closeModal('specialModal')">Отмена</button>
-    </div>
-  </div>
+      const DEFAULT_TAB = 'regulation';
+      const STORAGE_KEY = 'ems_rules_active_tab';
+      const VALID_TABS = ['faction', 'regulation', 'discord-rules', 'discord'];
 
-  <!-- ===== CERTIFICATE ===== -->
-  <div id="certWrapper" style="display:none; margin-top: 30px;">
-    <div id="certImage">
-      <div id="ciStampArea"></div>
-      <div class="ci-header">
-        <img class="ci-logo" alt="Звезда жизни" src="../assets/logo-star.svg">
-        <div class="ci-header-text">
-          <div class="ci-org">Emergency Medical Service</div>
-          <div class="ci-title">СПРАВКА</div>
-          <div class="ci-subtitle">о психическом состоянии сотрудника</div>
-        </div>
-      </div>
+      function activateTab(name) {
+        if (!VALID_TABS.includes(name)) name = DEFAULT_TAB;
+        tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+        panes.forEach(p => {
+          const isActive = p.id === 'pane-' + name;
+          p.style.display = isActive ? 'block' : 'none';
+          p.classList.toggle('active', isActive);
+        });
+      }
 
-      <div class="ci-body">
-        <div class="ci-row">
-          <span class="ci-label">Сотрудник:</span>
-          <span class="ci-value" id="ciPatient">-</span>
-        </div>
-        <div class="ci-row">
-          <span class="ci-label">Психическое состояние:</span>
-          <div class="ci-state" id="ciState">-</div>
-        </div>
-        <div class="ci-verdict" id="ciVerdict">-</div>
-      </div>
+      let savedTab = null;
+      try { savedTab = localStorage.getItem(STORAGE_KEY); } catch (e) { savedTab = null; }
 
-      <div class="ci-footer">
-        <div>
-          <div class="ci-sign-line" id="ciDoctor">-</div>
-          <div class="ci-label">Подпись врача</div>
-        </div>
-        <div class="ci-date" id="ciDate">-</div>
-      </div>
-    </div>
+      const initialTab = (savedTab && VALID_TABS.includes(savedTab)) ? savedTab : DEFAULT_TAB;
+      activateTab(initialTab);
 
-    <div class="cert-actions">
-      <button class="copy-btn" id="copyBtn" onclick="copyCertificate()">Текст для Discord</button>
-      <button class="img-btn" id="imgBtn" onclick="copyCertificateAsImage()">Скопировать картинкой</button>
-    </div>
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const name = tab.dataset.tab;
+          activateTab(name);
+          try { localStorage.setItem(STORAGE_KEY, name); } catch (e) { }
+        });
+      });
+    })();
+  </script>
 
-    <div class="rp-row" id="rpRow" style="display:none;">
-      <button class="rp-btn" id="rpBtn" onclick="copyRoleplay()">RP /me</button>
-      <button class="do-btn" id="doBtn" onclick="copyDo()">RP /do</button>
-    </div>
-
-    <div class="copy-status" id="copyStatus"></div>
-  </div>
-
-  <!-- ===== SCRIPTS ===== -->
-  <script src="../js/data.js"></script>
-  <script src="../js/utils.js"></script>
-  <script src="../js/stamp.js"></script>
-  <script src="../js/quiz.js"></script>
-  <script src="../js/certificate.js"></script>
+  <!-- Тема -->
   <script src="../js/theme.js"></script>
+
 </body>
 
 </html>

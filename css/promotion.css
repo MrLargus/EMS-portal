@@ -192,31 +192,6 @@ body.theme-dark button.back-to-selection-btn:hover {
   color: #fff;
 }
 
-/* Уведомление */
-.toast {
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  background: var(--text);
-  color: var(--panel);
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  z-index: 9999;
-}
-
-.toast.show {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
 /* =========================================================
    ИЕРАРХИЯ ДОЛЖНОСТЕЙ (ТАБЛИЧНАЯ СЕТКА)
    ========================================================= */
