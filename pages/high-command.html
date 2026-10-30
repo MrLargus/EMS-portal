@@ -9,10 +9,9 @@
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/portal.css">
   <link rel="stylesheet" href="../css/themes.css">
+  <link rel="stylesheet" href="../css/staff.css">
   <style>
-    html {
-      transition: none;
-    }
+    html { transition: none; }
   </style>
   <script src="../js/theme-init.js"></script>
 </head>
@@ -47,115 +46,155 @@
     <div class="page-content">
       <h1>Старший состав</h1>
 
-      <h2>01 - Руководство департамента</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Должность</th>
-              <th>Имя</th>
-              <th>Discord</th>
-              <th>График</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Главный врач</td>
-              <td>Anasteysha Tsepesh</td>
-              <td><code class="copy-nick" data-nick="anasteysha3230">anasteysha3230</code></td>
-              <td>Свободный</td>
-            </tr>
-            <tr>
-              <td>Заместитель главного врача</td>
-              <td>Skylie Freymar</td>
-              <td><span style="color: var(--text-faint); font-style: italic;">Не указан</span></td>
-              <td>Свободный</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- 01. РУКОВОДСТВО -->
+      <div class="staff-section">
+        <h2>01 - Руководство департамента</h2>
+        <div class="staff-grid">
+
+          <div class="staff-card">
+            <div class="staff-info">
+              <div class="staff-role">Главный врач</div>
+              <div class="staff-name">Anasteysha Tsepesh</div>
+              <div class="staff-discord copy-nick" data-nick="anasteysha3230">
+                <span>📋</span> anasteysha3230
+              </div>
+              <div class="staff-schedule">
+                <span>🟢</span> График свободный
+              </div>
+            </div>
+            <div class="staff-photo">
+              <div class="staff-photo-wrapper">
+                <img src="../assets/GlavVrachEMS-no-bgCUT.png" alt="Anasteysha Tsepesh (День)" class="staff-img-light">
+                <img src="../assets/GlavVrachNight-no-bgCUT.png" alt="Anasteysha Tsepesh (Ночь)" class="staff-img-dark">
+              </div>
+            </div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-info">
+              <div class="staff-role">Заместитель главного врача</div>
+              <div class="staff-name">Skylie Freymar</div>
+              <div class="staff-discord no-discord">Не указан</div>
+              <div class="staff-schedule">
+                <span>🟢</span> График свободный
+              </div>
+            </div>
+            <div class="staff-photo">
+              <div class="staff-photo-wrapper">
+                <img src="../assets/SkailyEMS-no-bgCUT.png" alt="Skylie Freymar (День)" class="staff-img-light">
+                <img src="../assets/SkilyNight-no-bgCUT.png" alt="Skylie Freymar (Ночь)" class="staff-img-dark">
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
-      <h2>02 - HRID</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Должность</th>
-              <th>Имя</th>
-              <th>Discord</th>
-              <th>График</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Глава отдела</td>
-              <td>Vladislav Krohalev</td>
-              <td><span style="color: var(--text-faint); font-style: italic;">Не указан</span></td>
-              <td>Свободный</td>
-            </tr>
-            <tr>
-              <td>Заместитель главы</td>
-              <td>Kolya Fantasy</td>
-              <td><span style="color: var(--text-faint); font-style: italic;">Не указан</span></td>
-              <td><span style="color: var(--amber); font-weight: 600;">В отпуске</span></td>
-            </tr>
-            <tr>
-              <td>Заместитель главы</td>
-              <td>Polina Fox</td>
-              <td><span style="color: var(--text-faint); font-style: italic;">Не указан</span></td>
-              <td>Свободный</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- 02. HRID -->
+      <div class="staff-section">
+        <h2>02 - HRID</h2>
+        <div class="staff-grid">
+
+          <div class="staff-card">
+            <div class="staff-info">
+              <div class="staff-role">Глава отдела</div>
+              <div class="staff-name">Vladislav Krohalev</div>
+              <div class="staff-discord no-discord">Не указан</div>
+              <div class="staff-schedule"><span>🟢</span> График свободный</div>
+            </div>
+            <div class="staff-photo">
+              <div class="photo-placeholder">Нет фото</div>
+            </div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-info">
+              <div class="staff-role">Заместитель главы</div>
+              <div class="staff-name">Kolya Fantasy</div>
+              <div class="staff-discord no-discord">Не указан</div>
+              <div class="staff-schedule"><span class="status-away">🟡</span> В отпуске</div>
+            </div>
+            <div class="staff-photo">
+              <div class="photo-placeholder">Нет фото</div>
+            </div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-info">
+              <div class="staff-role">Заместитель главы</div>
+              <div class="staff-name">Polina Fox</div>
+              <div class="staff-discord no-discord">Не указан</div>
+              <div class="staff-schedule"><span>🟢</span> График свободный</div>
+            </div>
+            <div class="staff-photo">
+              <div class="photo-placeholder">Нет фото</div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
-      <h2>03 - EPD</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Должность</th>
-              <th>Имя</th>
-              <th>Discord</th>
-              <th>График</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Глава отдела</td>
-              <td>James Barrow</td>
-              <td><span style="color: var(--text-faint); font-style: italic;">Не указан</span></td>
-              <td>Свободный</td>
-            </tr>
-            <tr>
-              <td>Заместитель главы</td>
-              <td>Largus Frey</td>
-              <td><span style="color: var(--text-faint); font-style: italic;">Не указан</span></td>
-              <td>Свободный</td>
-            </tr>
-            <tr>
-              <td>Заместитель главы</td>
-              <td>Timur Shatilove</td>
-              <td><span style="color: var(--text-faint); font-style: italic;">Не указан</span></td>
-              <td>Свободный</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- 03. EPD -->
+      <div class="staff-section">
+        <h2>03 - EPD</h2>
+        <div class="staff-grid">
+
+          <div class="staff-card">
+            <div class="staff-info">
+              <div class="staff-role">Глава отдела</div>
+              <div class="staff-name">James Barrow</div>
+              <div class="staff-discord no-discord">Не указан</div>
+              <div class="staff-schedule"><span>🟢</span> График свободный</div>
+            </div>
+            <div class="staff-photo">
+              <div class="photo-placeholder">Нет фото</div>
+            </div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-info">
+              <div class="staff-role">Заместитель главы</div>
+              <div class="staff-name">Largus Frey</div>
+              <div class="staff-discord no-discord">Не указан</div>
+              <div class="staff-schedule"><span>🟢</span> График свободный</div>
+            </div>
+            <div class="staff-photo">
+              <div class="photo-placeholder">Нет фото</div>
+            </div>
+          </div>
+
+          <div class="staff-card">
+            <div class="staff-info">
+              <div class="staff-role">Заместитель главы</div>
+              <div class="staff-name">Timur Shatilove</div>
+              <div class="staff-discord no-discord">Не указан</div>
+              <div class="staff-schedule"><span>🟢</span> График свободный</div>
+            </div>
+            <div class="staff-photo">
+              <div class="photo-placeholder">Нет фото</div>
+            </div>
+          </div>
+
+        </div>
       </div>
 
-      <h2>04 - Обязанности старшего состава</h2>
-      <ul>
-        <li>Проведение экзаменов и аттестаций;</li>
-        <li>Рассмотрение заявок на повышение;</li>
-        <li>Контроль за соблюдением порядка;</li>
-        <li>Разрешение конфликтных ситуаций внутри фракции;</li>
-        <li>Сопровождение на мероприятия с другими фракциями.</li>
-      </ul>
+      <!-- Обязанности -->
+      <div class="staff-section">
+        <h2>04 - Обязанности старшего состава</h2>
+        <ul>
+          <li>Проведение экзаменов и аттестаций;</li>
+          <li>Рассмотрение заявок на повышение;</li>
+          <li>Контроль за соблюдением порядка;</li>
+          <li>Разрешение конфликтных ситуаций внутри фракции;</li>
+          <li>Сопровождение на мероприятия с другими фракциями.</li>
+        </ul>
 
-      <div class="info-box">
-        Приём по личным вопросам осуществляется через Discord соответствующего сотрудника. <br>
-        <small style="opacity: 0.7;">💡 Подсказка: нажмите на никнейм в таблице, чтобы скопировать его.</small>
+        <div class="info-box">
+          Приём по личным вопросам осуществляется через Discord соответствующего сотрудника. <br>
+          <small style="opacity: 0.7;">💡 Подсказка: нажмите на никнейм в карточке, чтобы скопировать его.</small>
+        </div>
       </div>
+
     </div>
   </main>
 

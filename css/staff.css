@@ -1,0 +1,222 @@
+/* =========================================================
+   СТРАНИЦА СТАРШЕГО СОСТАВА (high-command.html)
+   ========================================================= */
+
+/* ===== Секции ===== */
+.staff-section {
+  margin-bottom: 40px;
+}
+
+.staff-section h2 {
+  font-family: var(--mono);
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-soft);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* ===== Сетка карточек ===== */
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 20px;
+}
+
+/* ===== Карточка сотрудника ===== */
+.staff-card {
+  display: flex;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.staff-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+
+/* ===== Левая часть: информация ===== */
+.staff-info {
+  flex: 1;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+}
+
+.staff-role {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.staff-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  margin: 0 0 15px 0;
+  line-height: 1.2;
+}
+
+.staff-discord {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--panel-soft);
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent);
+  cursor: pointer;
+  transition: all 0.15s;
+  align-self: flex-start;
+}
+
+.staff-discord:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.staff-discord.no-discord {
+  color: var(--text-faint);
+  font-style: italic;
+  cursor: default;
+  background: transparent;
+  border-color: transparent;
+  padding-left: 0;
+}
+
+.staff-discord.no-discord:hover {
+  background: transparent;
+}
+
+.staff-schedule {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.staff-schedule span.status-away {
+  color: var(--amber);
+  font-weight: 700;
+}
+
+/* ===== Правая часть: фото ===== */
+.staff-photo {
+  width: 160px;
+  background: var(--panel-soft);
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-left: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.staff-photo-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: end center;
+}
+
+.staff-photo-wrapper img {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: opacity 0.6s ease, transform 0.4s ease, filter 0.6s ease;
+}
+
+/* ===== Переключение тем ===== */
+.staff-img-light {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.staff-img-dark {
+  opacity: 0;
+  transform: scale(0.98);
+}
+
+body.theme-dark .staff-img-light {
+  opacity: 0;
+  transform: scale(1.02);
+}
+
+body.theme-dark .staff-img-dark {
+  opacity: 1;
+  transform: scale(1);
+  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.4));
+}
+
+.staff-card:hover .staff-img-light {
+  transform: scale(1.05);
+}
+
+body.theme-dark .staff-card:hover .staff-img-dark {
+  transform: scale(1.05);
+}
+
+/* ===== Заглушка ===== */
+.photo-placeholder {
+  font-family: var(--mono);
+  font-size: 40px;
+  color: var(--border);
+  opacity: 0.5;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 600px) {
+  .staff-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .staff-card {
+    flex-direction: column;
+  }
+
+  .staff-info {
+    padding: 20px;
+  }
+
+  .staff-photo {
+    width: 100%;
+    height: 220px;
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .staff-name {
+    font-size: 20px;
+  }
+}

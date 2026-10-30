@@ -40,7 +40,16 @@
   if (toggle) {
     toggle.addEventListener('click', () => {
       const isDark = body.classList.contains('theme-dark');
+      
+      // Добавляем класс для запуска анимации вспышки на персонажах
+      document.body.classList.add('theme-switching');
+      
       applyTheme(isDark ? 'light' : 'dark');
+      
+      // Убираем класс через 800мс (длительность анимации)
+      setTimeout(() => {
+        document.body.classList.remove('theme-switching');
+      }, 800);
     });
   }
 })();

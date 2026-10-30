@@ -4,9 +4,9 @@
 
 /* ===== HERO ===== */
 .hero {
-    padding: 30px 0 40px;
+    padding: 80px 0 40px;
     border-bottom: 1px solid var(--border);
-    margin-bottom: 0px; 
+    margin-bottom: 0px;
 }
 
 .hero-label {
@@ -25,6 +25,9 @@
     line-height: 1.1;
     margin-bottom: 15px;
     color: var(--text);
+    max-width: 60%; /* Текст занимает не больше 60% экрана */
+    position: relative;
+    z-index: 2;
 }
 
 .hero h1 .accent {
@@ -37,6 +40,9 @@
     font-size: 15.5px;
     line-height: 1.7;
     margin-bottom: 30px;
+    max-width: 50%; /* Описание тоже ограничиваем */
+    position: relative;
+    z-index: 2;
 }
 
 .hero-stats {
@@ -55,6 +61,8 @@
     align-items: center;
     padding: 14px 28px;
     border-right: 1px solid var(--border);
+    position: relative;
+    z-index: 2;
 }
 
 .stat:last-child {
@@ -966,7 +974,8 @@
     margin-top: 0;
     margin-bottom: 40px;
     padding: 15px 0;
-    border-bottom: 1px solid var(--border); /* Только нижняя линия */
+    border-bottom: 1px solid var(--border);
+    /* Только нижняя линия */
 }
 
 .news-ticker-row {
@@ -1025,7 +1034,8 @@
     font-family: var(--mono);
     font-size: 13px;
     font-weight: 600;
-    color: var(--text); /* Сделали текст основным цветом (ярче) */
+    color: var(--text);
+    /* Сделали текст основным цветом (ярче) */
     white-space: nowrap;
 }
 
@@ -1036,9 +1046,14 @@
 }
 
 @keyframes marquee {
-    0% { transform: translateX(0); }
+    0% {
+        transform: translateX(0);
+    }
+
     /* Сдвигаем ровно на ширину ОДНОГО набора новостей */
-    100% { transform: translateX(-50%); } 
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 /* Мобильная адаптация */
@@ -1146,50 +1161,205 @@
    ОБЕРТКА ДЛЯ ТАБЛИЦ (СКРОЛЛ НА МОБИЛЬНЫХ)
    ========================================================= */
 .table-wrapper {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  margin: 20px 0;
-  border: 1px solid var(--border);
-  border-radius: 8px;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 20px 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
 }
 
 .table-wrapper table {
-  margin: 0;
-  border: none;
-  border-radius: 0;
-  min-width: 600px;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    min-width: 600px;
 }
 
 /* =========================================================
    УВЕДОМЛЕНИЕ (TOAST)
    ========================================================= */
 .toast {
-  position: fixed;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  background: var(--text);
-  color: var(--panel);
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-family: var(--mono);
-  font-size: 13px;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  
-  /* Скрыто до появления */
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  z-index: 9999;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--text);
+    color: var(--panel);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    /* Скрыто до появления */
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 9999;
 }
 
 .toast.show {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* =========================================================
+   ПЕРСОНАЖИ НА ГЛАВНОЙ СТРАНИЦЕ (HERO)
+   ========================================================= */
+
+.hero {
+    position: relative;
+    /* Добавляем отступ снизу, чтобы персонаж не наезжал на бегущую строку */
+    padding-bottom: 20px;
+}
+
+/* Контейнер выносим за пределы body, привязывая к правому краю экрана */
+.hero-characters {
+    position: absolute;
+    top: 0;
+    right: 0;       /* Прижимаем всю группу к правому краю */
+    bottom: 0;
+    width: auto;    /* Убираем 50vw, чтобы ширина зависела от картинок */
+    display: flex;  /* Выстраиваем персонажей в ряд */
+    align-items: flex-end; /* Прижимаем к низу */
+    justify-content: flex-end; /* Выравниваем по правому краю */
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Слот, в котором лежат картинки */
+.character-slot {
+    position: relative; /* Меняем с absolute на relative, чтобы они стояли в ряд */
+    bottom: 0;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+}
+
+/* Прижимаем слота к правому краю */
+.character-slot.character-left {
+    justify-content: flex-start;
+    margin-right: -140px; /* Немного накладываем персонажей друг на друга (подбери значение) */
+}
+
+/* Обертка картинок */
+.char-image-wrapper {
+    position: relative;
+    display: grid;
+    /* Накладываем картинки друг на друга */
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+/* === САМОЕ ВАЖНОЕ: Накладываем картинки друг на друга через сетку === */
+/* Это гарантирует, что обе картинки (день и ночь) будут занимать одно и то же место */
+.char-img {
+    grid-area: 1 / 1;
+    width: auto;
+    
+    /* 
+       clamp(минимум, идеально, максимум)
+       280px - минимальная высота (на ноутбуках)
+       30vw - привязка к ширине экрана (30% от ширины)
+       400px - максимальная высота (чтобы не улетали в космос на больших мониторах)
+    */
+    height: clamp(280px, 30vw, 400px);
+    
+    object-fit: contain;
+    object-position: bottom right;
+    
+    -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out, filter 0.8s ease-in-out;
+}
+
+/* Переопределяем display для картинок, чтобы сработала сетка */
+.char-image-wrapper {
+    display: grid;
+}
+
+/* --- ЛОГИКА ТЕМ (КРОССФЕЙД) --- */
+.char-light {
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+}
+
+.char-dark {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+body.theme-dark .char-light {
+    opacity: 0;
+    transform: scale(1.03);
+}
+
+body.theme-dark .char-dark {
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.6)) drop-shadow(0 0 20px rgba(0, 229, 255, 0.2));
+}
+
+/* --- АНИМАЦИЯ ВСПЫШКИ --- */
+body.theme-dark .character-slot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.6) 0%, transparent 65%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    animation: none;
+}
+
+.theme-switching .character-slot::before {
+    animation: flashEffect 0.8s ease-out forwards;
+}
+
+@keyframes flashEffect {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    30% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+}
+
+/* Текст поверх персонажей */
+.hero>*:not(.hero-characters) {
+    position: relative;
+    z-index: 1;
+}
+
+/* --- АДАПТИВ --- */
+
+@media (max-width: 900px) {
+    .hero-characters {
+        opacity: 0.15; /* Делаем их полупрозрачными на планшетах */
+        right: -50px;  /* Чуть сдвигаем за край */
+    }
+    .hero h1, .hero-desc {
+        max-width: 100%; /* На планшетах текст может занимать всю ширину */
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-characters {
+        display: none; /* На телефонах полностью скрываем */
+    }
 }
